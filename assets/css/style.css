@@ -1,0 +1,58 @@
+.navbar-brand{
+    font-family: 'Alex Brush', cursive;
+    color: black;
+    font-size: 4rem;
+    margin-left: 45rem;
+}
+.dropdown-toggle{
+    font-size: 1.1rem;
+    background-color: #F06FC9;
+}
+body{
+    font-family: 'Abel', sans-serif;
+    background-image: url(../img/calendar-bg.jpeg);
+}
+span{
+    font-family: 'Alex Brush', cursive;
+    font-size: 1.8rem;
+    color: black;
+}
+footer{
+    bottom: 0;
+    width: 100%;
+    font-size: 1.3rem;
+}
+.container{
+    background-color: #C270DA;
+    margin-top: 9rem;
+    width: 45%;
+}
+input{
+    width: 75%;
+}
+submit{
+    width: 25%;
+}
+@media screen and (max-width: 850px){
+    .navbar-brand{
+        font-size : 1.7rem;
+        margin-left: 2.5rem;
+    }
+    .container{
+        width: 75%;
+        margin-top: 6rem;
+    }
+    input{
+        width : 100%;
+    }
+    submit{
+        width: 100%;
+    }
+    span{
+        font-size: 1.2rem;
+    }
+    footer{
+        font-size: 1rem;
+    }
+
+}
