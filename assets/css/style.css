@@ -1,12 +1,11 @@
+.navbar{
+    display: grid;
+    justify-content: center;
+}
 .navbar-brand{
     font-family: 'Alex Brush', cursive;
     color: black;
     font-size: 4rem;
-    margin-left: 45rem;
-}
-.dropdown-toggle{
-    font-size: 1.1rem;
-    background-color: #F06FC9;
 }
 body{
     font-family: 'Abel', sans-serif;
@@ -23,16 +22,10 @@ footer{
     font-size: 1.3rem;
 }
 .container{
-    background-color: #C270DA;
-    margin-top: 9rem;
+    margin-top: 8.7rem;
     width: 45%;
 }
-input{
-    width: 75%;
-}
-submit{
-    width: 25%;
-}
+
 @media screen and (max-width: 850px){
     .navbar-brand{
         font-size : 1.7rem;
@@ -54,5 +47,4 @@ submit{
     footer{
         font-size: 1rem;
     }
-
 }
