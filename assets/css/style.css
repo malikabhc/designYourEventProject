@@ -7,6 +7,9 @@
     color: black;
     font-size: 4rem;
 }
+.font-title{
+    font-family: 'Alex Brush', cursive;
+}
 body{
     font-family: 'Abel', sans-serif;
     background-image: url(../img/calendar-bg.jpeg);
@@ -25,7 +28,6 @@ footer{
     margin-top: 8.7rem;
     width: 45%;
 }
-
 @media screen and (max-width: 850px){
     .navbar-brand{
         font-size : 1.7rem;

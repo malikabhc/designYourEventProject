@@ -14,3 +14,17 @@ $(document).ready(function(){
 });
 });
 
+// AJAX pour afficher les 
+$(function () {
+    $("#postalCode").keyup(function () {
+        $.post("../../controllers/indexCtrl.php", {
+            postalCodeSearch: $("#postalCode").val()
+        }, function (cityName) {
+            $("#city").empty();
+            // Each est une fonction qui fait une boucle sur les éléments de la classe cityName
+            $.each(cityName, function(cityKey, cityValue){
+                $("#city").append('<option value=" ' + cityValue.id + '">' + cityValue.cityName + ' ' + '</option >')
+                });
+        }, 'JSON');
+    });
+});

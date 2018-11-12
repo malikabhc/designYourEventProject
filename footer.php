@@ -1,4 +1,4 @@
-<footer class="page-footer teal lighten-1">
+<footer class="page-footer teal lighten-1 mt-2">
     <div class="container-fluid">
         <!-- Footer -->
         <div class="row">
@@ -25,3 +25,5 @@
     MDB core JavaScript
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/js/mdb.min.js"></script> -->
 </footer>
+</body>
+</html>
