@@ -1,7 +1,4 @@
 <?php
-// Ouverture de la session
-session_start();
-        
 // Définition des informations de connexion à la base de données
 define('HOST', '127.0.0.1');
 define('LOGIN', 'malikabhc');

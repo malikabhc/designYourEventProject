@@ -1,5 +1,7 @@
-<?php 
+<?php
+session_start();
 include_once 'language/FR_FR.php';
+include_once 'controllers/headerCtrl.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +25,19 @@ include_once 'language/FR_FR.php';
         <!-- Navbar-brand -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top teal lighten-1">
             <a class="navbar-brand" href="index.php">Design-your-Event</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+
+            <!-- Dropdown -->
+            <div class="dropdown">
+                <?php if (isset($_SESSION['isConnect'])) { ?>
+                    <button class="btn btn-dark dropdown-toggle font-weight-bold" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false"><?= sprintf(NAV_WELCOME, $_SESSION['firstname']) ?> <i class="far fa-grin-hearts"></i>
+                    </button>
+                    <!--Menu-->
+                    <div class="dropdown-menu dropdown-primary">
+                        <a class="dropdown-item" href="profile.php"><?= NAV_PERSONAL_INFO ?></a>
+                        <a class="dropdown-item" href="<?= $_SERVER['PHP_SELF'] ?>?action=disconnect"><?= NAV_DISCONNECT ?></a>
+                    </div>
+                <?php } ?>
+            </div>
+
         </nav>

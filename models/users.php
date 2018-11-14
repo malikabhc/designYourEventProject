@@ -39,7 +39,7 @@ class users extends database {
      */
     public function userConnection() {
         $state = false;
-        $query = 'SELECT `id`, `mail`, `password` FROM `ye27d_users` '
+        $query = 'SELECT `id`, `mail`, `password`, `firstname` FROM `ye27d_users` '
                 . 'WHERE `mail` = :mail';
         $result = $this->db->prepare($query);
         $result->bindValue(':mail', $this->mail, PDO::PARAM_STR);
@@ -50,8 +50,9 @@ class users extends database {
             if (is_object($selectResult)) { 
                 // On hydrate
                 $this->id = $selectResult->id;
-                $this->lastname = $selectResult->mail;
+                $this->mail = $selectResult->mail;
                 $this->password = $selectResult->password;
+                $this->firstname = $selectResult->firstname;
                 $state = true;
             }
         }

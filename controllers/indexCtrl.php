@@ -1,6 +1,5 @@
 <?php
-
-//Appel de l'AJAX
+// Appel de l'AJAX
 if (isset($_POST['postalCodeSearch'])) {
     include '../configuration.php';
     $city = new city();
@@ -16,7 +15,7 @@ if (isset($_POST['postalCodeSearch'])) {
     $regexName = '/^[a-zA-Zàáâãäåçèéêëìíîïðòóôõöùúûüýÿ\- ]+$/';
 // Déclaration de la regex pour les noms et les chiffres
     $regexNameAndNumber = '/^[0-9-a-zA-Zàáâãäåçèéêëìíîïðòóôõöùúûüýÿ\- ]+$/';
-//Déclaration de la regex pour le code postal avec une limite de 5 chiffres
+// Déclaration de la regex pour le code postal avec une limite de 5 chiffres
     $regexPostalCode = '/^[0-9]{5}$/';
 
 
@@ -60,7 +59,7 @@ if (isset($_POST['postalCodeSearch'])) {
 
         if (!empty($_POST['city'])) {
             $city = htmlspecialchars($_POST['city']);
-            // On met une regex avec lettres et chiffres car on récupère l'id de la ville
+            // On met une regex avec des chiffres et des lettres car on récupère l'id de la ville
             if (!preg_match($regexNameAndNumber, $city)) {
                 $formError['city'] = ERROR_CITY;
             }
@@ -68,7 +67,7 @@ if (isset($_POST['postalCodeSearch'])) {
 
         if (!empty($_POST['mailRegister'])) {
             $mailRegister = htmlspecialchars($_POST['mailRegister']);
-            // filter_var
+            // filter_var permet de filtrer la variable $mailRegister afin qu'elle corresponde aux normes email classique
             if (!filter_var($mailRegister, FILTER_VALIDATE_EMAIL)) {
                 $formError['mailRegister'] = ERROR_MAIL;
             }
@@ -77,6 +76,7 @@ if (isset($_POST['postalCodeSearch'])) {
         }
 
         if (!empty($_POST['passwordRegister']) && !empty($_POST['passwordVerify']) && $_POST['passwordRegister'] == $_POST['passwordVerify']) {
+            // On utilise password_hash pour créer une clé de hachage et que le mot de passe ne soit connu que de l'utilisateur 
             $passwordRegister = password_hash($_POST['passwordRegister'], PASSWORD_DEFAULT);
         } elseif ($_POST['passwordRegister'] != $_POST['passwordVerify']) {
             $formError['passwordVerify'] = ERROR_PASSWORD_VERIFY;
@@ -86,26 +86,29 @@ if (isset($_POST['postalCodeSearch'])) {
         }
 
         if (isset($_POST['submitRegister']) && count($formError) == 0) {
+            // Si $_POST['submitRegister'] existe et que le $formError ne comporte aucune erreur, on instancie la classe users
             $user = new users();
+            // On hydrate
             $user->lastname = $lastname;
             $user->firstname = $firstname;
             $user->birthdate = $birthdate;
             $user->idCity = $city;
-            $user->mailRegister = $mailRegister;
-            $user->password = $password;
+            $user->mail = $mailRegister;
+            $user->password = $passwordRegister;
             $user->postalCode = $postalCode;
+            // On appelle la méthode userRegister
             $user->userRegister();
         }
     }
 }
 
 // CONNEXION
+$mailLogin = '';
 $message = '';
 
 if (isset($_POST['submitLogin'])) {
         if (!empty($_POST['mailLogin'])) {
             $mailLogin = htmlspecialchars($_POST['mailLogin']);
-            // filter_var
             if (!filter_var($mailLogin, FILTER_VALIDATE_EMAIL)) {
                 $formError['mailLogin'] = ERROR_MAIL;
             }
@@ -118,18 +121,21 @@ if (isset($_POST['submitLogin'])) {
         $formError['passwordLogin'] = ERROR_PASSWORD;
     }
     if (count($formError) == 0) {
+        // S'il n'y a pas d'erreur dans le tableau $formError on instancie l'objet de la classe users
         $user = new users();
-        $user->mailLogin = $mailLogin;
+        $user->mail = $mailLogin;
+        // On appelle la méthode userConnection
         if ($user->userConnection()) {
-            if (password_verify($passwordLogin, $user->passwordLogin)) {
-                //la connexion se fait
-                $message = USER_CONNECTION_SUCCESS;
-                //On rempli la session avec les attributs de l'objet issus de l'hydratation
+            // On vérifie avec la fonction password_verify que le hachage du mdp dans la base de données correspond au mdp entrer dans l'input
+            if (password_verify($passwordLogin, $user->password)) {
+                // La connexion se fait, on remplit la session avec les attributs de l'objet issus de l'hydratation
                 $_SESSION['id'] = $user->id;
-                $_SESSION['mailLogin'] = $user->mailLogin;
+                $_SESSION['mailLogin'] = $user->mail;
+                // On récupère l'attribut firstname pour afficher un message de bienvenue personnalisé
+                $_SESSION['firstname'] = $user->firstname;
                 $_SESSION['isConnect'] = true;
             } else {
-                //la connexion échoue
+                // La connexion échoue on affiche un message d'erreur
                 $message = USER_CONNECTION_ERROR;
             }
         }

@@ -9,10 +9,31 @@ define('REGISTER_FIRSTNAME','Prénom');
 define('REGISTER_BIRTHDATE','Date de naissance');
 define('REGISTER_POSTAL_CODE','Code Postal');
 define('REGISTER_CITY','Ville');
+define('SELECT_CITY','Veuillez sélectionner une ville');
 define('REGISTER_MAIL','Email');
-define('REGISTER_PASSWORD','Mot de passe :');
+define('REGISTER_PASSWORD','Mot de passe');
 define('REGISTER_PASSWORD_VERIFY','Confirmation de mot de passe');
 define('REGISTER_SUBMIT','S\'inscrire');
+
+// Modification du profil
+define('UPDATE_LASTNAME','Nom');
+define('UPDATE_FIRSTNAME','Prénom');
+define('UPDATE_BIRTHDATE','Date de naissance');
+define('UPDATE_POSTAL_CODE','Code Postal');
+define('UPDATE_CITY','Ville');
+define('UPDATE_MAIL','Email');
+define('UPDATE_PASSWORD','Mot de passe');
+define('UPDATE_PASSWORD_VERIFY','Confirmation de mot de passe');
+define('UPDATE_SUBMIT','Enregistrer les modifications');
+
+// Formulaire de contact
+define('CONTACT_FORM_TITLE','Formulaire de contact');
+define('CONTACT_FORM_LASTNAME','Nom');
+define('CONTACT_FORM_FIRSTNAME','Prénom');
+define('CONTACT_FORM_MAIL','Adresse e-mail');
+define('CONTACT_FORM_OBJECT','Objet');
+define('CONTACT_FORM_MESSAGE','Votre message');
+define('CONTACT_FORM_SUBMIT','Envoyer');
 
 // Login
 define('LOGIN_MAIL','Email');
@@ -43,3 +64,12 @@ define('REQUIRE_PASSWORD_VERIFY', 'La confirmation du mot de passe est obligatoi
 define('USER_INSCRIPTION_SUCCESS','Votre inscription a bien été prise en compte !');
 define('USER_CONNECTION_SUCCESS','Connecté avec succès');
 define('USER_CONNECTION_ERROR','Erreur lors de la connexion');
+
+// Menu
+define('NAV_WELCOME','Bienvenue %s');
+define('NAV_DISCONNECT','Déconnexion');
+define('NAV_PERSONAL_INFO', 'Mes informations personnelles');
+
+// Footer
+define('FOOTER_CONTACT', 'Nous contacter');
+define('FOOTER_BLOG', 'le Blog');
