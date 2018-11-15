@@ -3,7 +3,7 @@
         <!-- Footer -->
         <div class="row">
             <div class="offset-1 col-lg-3 mt-2 text-center"><a href="blog.php" title="Design-your-Event le Blog"><span>Design-your-Event</span><?= FOOTER_BLOG ?></a></div>
-            <div class="col-lg-4 mt-2 text-center contact"><a href="contact.php" title="Nous contacter"><?= FOOTER_CONTACT ?></a></div>
+            <div class="col-lg-4 mt-2 text-center contact"><a href="contactForm.php" title="Nous contacter"><?= FOOTER_CONTACT ?></a></div>
             <div class="col-lg-4 mt-2 text-center">
                 <a href="http://www.facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook fa-2x"></i></a>
                 <a href="http://www.twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter fa-2x ml-5"></i></a>

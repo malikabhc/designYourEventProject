@@ -14,6 +14,7 @@ define('REGISTER_MAIL','Email');
 define('REGISTER_PASSWORD','Mot de passe');
 define('REGISTER_PASSWORD_VERIFY','Confirmation de mot de passe');
 define('REGISTER_SUBMIT','S\'inscrire');
+define('USER_ALREADY_EXIST', 'Cet email est lié à un compte existant');
 
 // Modification du profil
 define('UPDATE_LASTNAME','Nom');
@@ -31,7 +32,7 @@ define('CONTACT_FORM_TITLE','Formulaire de contact');
 define('CONTACT_FORM_LASTNAME','Nom');
 define('CONTACT_FORM_FIRSTNAME','Prénom');
 define('CONTACT_FORM_MAIL','Adresse e-mail');
-define('CONTACT_FORM_OBJECT','Objet');
+define('CONTACT_FORM_SUBJECT','Objet');
 define('CONTACT_FORM_MESSAGE','Votre message');
 define('CONTACT_FORM_SUBMIT','Envoyer');
 

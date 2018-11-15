@@ -1,4 +1,5 @@
 <?php
+
 // Appel de l'AJAX
 if (isset($_POST['postalCodeSearch'])) {
     include '../configuration.php';
@@ -85,7 +86,8 @@ if (isset($_POST['postalCodeSearch'])) {
             $formError['passwordVerify'] = REQUIRE_PASSWORD_VERIFY;
         }
 
-        if (isset($_POST['submitRegister']) && count($formError) == 0) {
+
+        if (count($formError) == 0) {
             // Si $_POST['submitRegister'] existe et que le $formError ne comporte aucune erreur, on instancie la classe users
             $user = new users();
             // On hydrate
@@ -96,7 +98,10 @@ if (isset($_POST['postalCodeSearch'])) {
             $user->mail = $mailRegister;
             $user->password = $passwordRegister;
             $user->postalCode = $postalCode;
-            // On appelle la méthode userRegister
+            $userExist = $user->checkIfUserExist();
+            if ($userExist == 0) {
+                // On appelle la méthode userRegister
+            }
             $user->userRegister();
         }
     }
@@ -107,19 +112,20 @@ $mailLogin = '';
 $message = '';
 
 if (isset($_POST['submitLogin'])) {
-        if (!empty($_POST['mailLogin'])) {
-            $mailLogin = htmlspecialchars($_POST['mailLogin']);
-            if (!filter_var($mailLogin, FILTER_VALIDATE_EMAIL)) {
-                $formError['mailLogin'] = ERROR_MAIL;
-            }
-        } else {
-            $formError['mailLogin'] = REQUIRE_MAIL;
+    if (!empty($_POST['mailLogin'])) {
+        $mailLogin = htmlspecialchars($_POST['mailLogin']);
+        if (!filter_var($mailLogin, FILTER_VALIDATE_EMAIL)) {
+            $formError['mailLogin'] = ERROR_MAIL;
         }
+    } else {
+        $formError['mailLogin'] = REQUIRE_MAIL;
+    }
     if (!empty($_POST['passwordLogin'])) {
         $passwordLogin = htmlspecialchars($_POST['passwordLogin']);
     } else {
         $formError['passwordLogin'] = ERROR_PASSWORD;
     }
+
     if (count($formError) == 0) {
         // S'il n'y a pas d'erreur dans le tableau $formError on instancie l'objet de la classe users
         $user = new users();
@@ -134,6 +140,8 @@ if (isset($_POST['submitLogin'])) {
                 // On récupère l'attribut firstname pour afficher un message de bienvenue personnalisé
                 $_SESSION['firstname'] = $user->firstname;
                 $_SESSION['isConnect'] = true;
+                // Permet de recharger la page après connexion
+                header('location: index.php');
             } else {
                 // La connexion échoue on affiche un message d'erreur
                 $message = USER_CONNECTION_ERROR;

@@ -17,6 +17,7 @@ $(document).ready(function(){
 // AJAX pour afficher les 
 $(function () {
     $("#postalCode").keyup(function () {
+        // Insertion d'une limite pour limiter le début
         $.post("../../controllers/indexCtrl.php", {
             postalCodeSearch: $("#postalCode").val()
         }, function (cityName) {
