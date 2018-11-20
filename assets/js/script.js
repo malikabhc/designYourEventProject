@@ -14,10 +14,11 @@ $(document).ready(function(){
 });
 });
 
-// AJAX pour afficher les 
+// AJAX pour afficher les villes
 $(function () {
     $("#postalCode").keyup(function () {
-        // Insertion d'une limite pour limiter le début
+        // Insertion d'une condition pour limiter le début de la recherche à 3 chiffres minimum
+        if($('#postalCode').val().length>=3)
         $.post("../../controllers/indexCtrl.php", {
             postalCodeSearch: $("#postalCode").val()
         }, function (cityName) {

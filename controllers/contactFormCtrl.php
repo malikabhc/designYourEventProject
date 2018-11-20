@@ -11,7 +11,7 @@ if (isset($_POST['contactFormSubmit'])) {
     if (!empty($_POST['lastname'])) {
         $lastname = htmlspecialchars($_POST['lastname']);
         // Si les données entrées dans le champ ne correspondent pas à la regex on affiche un message d'erreur
-        if (!preg_match($regexName, $lastname)) {
+        if (!preg_match($regexText, $lastname)) {
             $formError['lastname'] = ERROR_LASTNAME;
         }
         // Sinon on indique que le remplissage du champ est obligatoire
@@ -21,7 +21,7 @@ if (isset($_POST['contactFormSubmit'])) {
 
     if (!empty($_POST['firstname'])) {
         $firstname = htmlspecialchars($_POST['firstname']);
-        if (!preg_match($regexName, $firstname)) {
+        if (!preg_match($regexText, $firstname)) {
             $formError['firstname'] = ERROR_FIRSTNAME;
         }
     } else {
@@ -29,9 +29,9 @@ if (isset($_POST['contactFormSubmit'])) {
     }
 
     if (!empty($_POST['mail'])) {
-        $mail = htmlspecialchars($_POST['mail']);
+        $mailFrom = htmlspecialchars($_POST['mail']);
         // filter_var permet de filtrer la variable $mail afin qu'elle corresponde aux normes email classique
-        if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($mailFrom, FILTER_VALIDATE_EMAIL)) {
             $formError['mail'] = ERROR_MAIL;
         }
     } else {
@@ -45,18 +45,15 @@ if (isset($_POST['contactFormSubmit'])) {
     if (!empty($_POST['message'])) {
         $message = htmlspecialchars($_POST['message']);
     } else {
-        $formError['lastname'] = REQUIRE_MESSAGE;
+        $formError['message'] = REQUIRE_MESSAGE;
     }
+    if (count($formError) == 0) {
+        $mailTo = 'malikaa.b@hotmail.fr';
+        $headers = 'De : ' . $mailFrom;
+        $txt = 'Vous avez reçu un e-mail de ' . $firstname . ' ' . $lastname . ' : ' . $message;
 
-    $mailTo = 'malikaa.b@hotmail.fr';
-    $headers = 'De : ' . $mailFrom;
-    $txt = 'Vous avez reçu un e-mail de ' . $firstname . ' ' . $lastname . ' : ' . $message;
-
-    mail($mailTo, $subject, $txt, $headers);
-    header('Location: contactForm.php?mailsend');
-
-    $send = 'Votre message a bien été envoyé';
-} else {
-    $send = 'Erreur';
+        mail($mailTo, $subject, $txt, $headers);
+        // Ajouter une condition pour afficher la modale
+        header('Location: index.php?mailsend');
+    }
 }
-    

@@ -82,7 +82,7 @@ class users extends database {
      * 
      */
     public function displayUserInformations() {
-        $query = 'SELECT `ye27d_users`.`id`, `ye27d_users`.`lastname`, `ye27d_users`.`firstname`, DATE_FORMAT(`ye27d_users`.`birthdate`,\'%d/%m/%Y\') AS `birthdate`, `ye27d_users`.`mail`, `ye27d_city`.`cityName`, `ye27d_city`.`postalCode`  '
+        $query = 'SELECT `ye27d_users`.`id`, `ye27d_users`.`lastname`, `ye27d_users`.`firstname`, `ye27d_users`.`birthdate`, `ye27d_users`.`mail`, `ye27d_city`.`cityName`, `ye27d_city`.`postalCode`  '
                 . 'FROM `ye27d_users` '
                 . 'INNER JOIN `ye27d_city` '
                 . 'ON `ye27d_users`.`idCity` = `ye27d_city`.`id` '

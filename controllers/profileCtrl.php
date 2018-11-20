@@ -20,3 +20,7 @@ if (isset($_GET['delete'])) {
         exit;
     }
 }
+
+// Formatage de la date au format français
+$birthdate = $userProfile->birthdate;
+$date = date_create($birthdate);
