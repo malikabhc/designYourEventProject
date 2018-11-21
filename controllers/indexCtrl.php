@@ -4,11 +4,18 @@
 if (isset($_POST['postalCodeSearch'])) {
     include '../configuration.php';
     $city = new city();
-    $city->postalCode = $_POST['postalCodeSearch'];
+    $city->postalCode = htmlspecialchars($_POST['postalCodeSearch']);
+    // json_encode permet de faire l'affichage
     echo json_encode($city->getCityByPostalCode());
+    
+} elseif (isset($_POST['mailVerify'])) {
+    include '../configuration.php';
+    $checkUser = new users();
+    $checkUser->mail = htmlspecialchars($_POST['mailVerify']);
+    echo $checkUser->checkIfUserExist();
 } else {
 
-    include_once 'configuration.php';
+    include 'configuration.php';
 
 // Initialisation du tableau d'erreur
     $formError = array();
@@ -141,9 +148,9 @@ if (isset($_POST['submitLogin'])) {
                 $_SESSION['firstname'] = $user->firstname;
                 $_SESSION['isConnect'] = true;
                 // Permet de recharger la page après connexion
-                header('location: index.php');
+                header('location: profile.php');
             } else {
-                // La connexion échoue on affiche un message d'erreur
+                // Si la connexion échoue on affiche un message d'erreur
                 $message = USER_CONNECTION_ERROR;
             }
         }

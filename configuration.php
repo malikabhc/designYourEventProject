@@ -9,3 +9,4 @@ define('DBNAME', 'designYourEvent');
 include_once 'class/database.php';
 include_once 'models/users.php';
 include_once 'models/city.php';
+include_once 'models/events.php';

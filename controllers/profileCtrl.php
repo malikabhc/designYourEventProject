@@ -17,6 +17,7 @@ if (isset($_GET['delete'])) {
         session_unset();
         session_destroy();
         header('Location: index.php');
+        $message = 'Votre compte a bien été supprimé';
         exit;
     }
 }

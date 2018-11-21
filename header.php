@@ -35,6 +35,7 @@ include_once 'controllers/headerCtrl.php';
                     <!--Menu-->
                     <div class="dropdown-menu dropdown-primary">
                         <a class="dropdown-item" href="profile.php?id=<?= $_SESSION['id'] ?>"><?= NAV_PERSONAL_INFO ?></a>
+                        <a class="dropdown-item" href="createEvent.php?id=<?= $_SESSION['id'] ?>"><?= NAV_CREATE ?></a>
                         <a class="dropdown-item" href="<?= $_SERVER['PHP_SELF'] ?>?action=disconnect"><?= NAV_DISCONNECT ?></a>
                     </div>
                 <?php } ?>

@@ -11,16 +11,7 @@ include_once 'controllers/indexCtrl.php';
     </div>
     <?php if (isset($_POST['submitRegister']) && (count($formError) === 0)) {
         ?> 
-        <div class="alert-success">
-            <h1><?= USER_INSCRIPTION_SUCCESS ?></h1>
-            <p><?= $_POST['lastname'] ?></p>
-            <p><?= $_POST['firstname'] ?></p>
-            <p><?= $_POST['birthdate'] ?></p>
-            <p><?= $_POST['postalCode'] ?></p>
-            <p><?= $_POST['city'] ?></p>    
-            <p><?= $_POST['mailRegister'] ?></p>
-            <p><?= $_POST['passwordRegister'] ?></p>
-        </div>
+    <h2 class="text-center font-weight-bold mt-2"><?= USER_INSCRIPTION_SUCCESS ?></h2>
 <?php } else { ?>
         <!-- Formulaire d'inscription -->
         <form action="#" method="POST" class="form-group mt-2 mb-3" id="inscription">
@@ -54,7 +45,7 @@ include_once 'controllers/indexCtrl.php';
 
             <label for="passwordRegister" class="font-weight-bold"><?= USER_PASSWORD ?></label>
             <input type="password" name="passwordRegister" id="passwordRegister" class="form-control mb-2" placeholder="<?= USER_PASSWORD ?>" />
-            <p class="text-danger font-weight-bold"><?= isset($formError['password']) ? $formError['password'] : ''; ?></p>
+            <p class="text-danger font-weight-bold"><?= isset($formError['passwordRegister']) ? $formError['passwordRegister'] : ''; ?></p>
 
             <label for="confirmPassword" class="font-weight-bold"><?= USER_PASSWORD_VERIFY ?></label>
             <input type="password" name="passwordVerify" id="passwordVerify" class="form-control" placeholder="<?= USER_PASSWORD_VERIFY ?>" />
@@ -65,15 +56,15 @@ include_once 'controllers/indexCtrl.php';
 <?php } ?>
 
     <!-- Formulaire de connexion -->
-    <form action="#connection" method="POST" class="form-group mt-2 mb-3" id="connection">
-            <h2><?= $message ?></h2>
+    <form action="#" method="POST" class="form-group mt-2 mb-3" id="connection">
+        <h2 class="text-center"><?= $message ?></h2>
             <label for="mailLogin" class="font-weight-bold"><?= MAIL ?></label>
             <input type="mail" name="mailLogin" id="mailLogin" class="form-control mb-2" placeholder="<?= MAIL ?>" />
             <p class="text-danger font-weight-bold"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
 
             <label for="passwordLogin" id="password" class="font-weight-bold"><?= USER_PASSWORD ?></label>
             <input type="password" name="passwordLogin" id="passwordLogin" class="form-control mb-2" placeholder="<?= USER_PASSWORD ?>" />
-            <p class="text-danger font-weight-bold"><?= isset($formError['password']) ? $formError['password'] : ''; ?></p>
+            <p class="text-danger font-weight-bold"><?= isset($formError['passwordLogin']) ? $formError['passwordLogin'] : ''; ?></p>
 
             <input type="submit" name="submitLogin" id="submitLogin" class="form-control mt-2 font-weight-bold" value="<?= LOGIN_SUBMIT ?>" />
     </form>

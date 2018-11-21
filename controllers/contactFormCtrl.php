@@ -4,8 +4,6 @@
 $formError = array();
 // Déclaration de la regex pour les noms 
 $regexText = '/^[a-zA-Zàáâãäåçèéêëìíîïðòóôõöùúûüýÿ\- ]+$/';
-// Déclaration de la regex pour les noms et les chiffres
-$regexNameAndNumber = '/^[0-9-a-zA-Zàáâãäåçèéêëìíîïðòóôõöùúûüýÿ\- ]+$/';
 
 if (isset($_POST['contactFormSubmit'])) {
     if (!empty($_POST['lastname'])) {
@@ -47,6 +45,7 @@ if (isset($_POST['contactFormSubmit'])) {
     } else {
         $formError['message'] = REQUIRE_MESSAGE;
     }
+    
     if (count($formError) == 0) {
         $mailTo = 'malikaa.b@hotmail.fr';
         $headers = 'De : ' . $mailFrom;

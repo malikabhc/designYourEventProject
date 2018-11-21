@@ -50,6 +50,12 @@ define('REQUIRE_MAIL', 'L\'email est obligatoire');
 define('REQUIRE_PASSWORD', 'Le mot de passe est obligatoire');
 define('REQUIRE_PASSWORD_VERIFY', 'La confirmation du mot de passe est obligatoire');
 define('REQUIRE_MESSAGE', 'Le message est obligatoire');
+define('REQUIRE_EVENT_NAME', 'Le nom de l\'évènement est obligatoire');
+define('REQUIRE_ADDRESS', 'L\'adresse est obligatoire');
+define('REQUIRE_DATE_START', 'La date de début d\'évènement est obligatoire');
+define('REQUIRE_HOUR_START', 'L\'heure de début d\'évènement est obligatoire');
+define('REQUIRE_EVENT_DESCRIPTION', 'La description de l\'évènement est obligatoire');
+
 
 // Connexion
 define('USER_INSCRIPTION_SUCCESS','Votre inscription a bien été prise en compte !');
@@ -58,8 +64,9 @@ define('USER_CONNECTION_ERROR','Erreur lors de la connexion');
 
 // Menu
 define('NAV_WELCOME','Bienvenue %s');
-define('NAV_DISCONNECT','Déconnexion');
 define('NAV_PERSONAL_INFO', 'Mes informations personnelles');
+define('NAV_CREATE', 'Créer un évènement');
+define('NAV_DISCONNECT','Déconnexion');
 
 // Compte client 
 define('EDIT_PROFILE', 'Modifier mes données');
@@ -68,6 +75,25 @@ define('DELETE_ACCOUNT_CONFIRMATION', 'Êtes-vous sûr de vouloir supprimer votr
 define('DELETE', 'Supprimer');
 define('CANCEL', 'Annuler');
 
+// Création évènement
+define('EVENT_NAME', 'Nom de l\'évènement');
+define('EVENT_LOCATION', 'Lieu de l\'évènement');
+define('DATE_START', 'Date de début');
+define('HOUR_START', 'Heure de début');
+define('DATE_FINISH', 'Date de fin');
+define('HOUR_FINISH', 'Heure de fin');
+define('EVENT_DESCRIPTION', 'Description de l\'évènement');
+define('FACEBOOK_LINK', 'Lien Facebook');
+define('TWITTER_LINK', 'Lien Twitter');
+define('INSTAGRAM_LINK', 'Lien Instagram');
+define('SNAPCHAT_LINK', 'Lien Snapchat');
+define('CREATE_EVENT', 'Créer un évènement');
+
+// Etape
+define('STEP_ONE', 'Étape 1 : Renseignement des données');
+define('STEP_TWO', 'Étape 2 : Le Design');
+define('STEP_THREE', 'Étape 3 : Le Résultat');
+define('NEXT_STEP', 'Étape suivante');
 // Footer
 define('FOOTER_CONTACT', 'Nous contacter');
 define('FOOTER_BLOG', 'le Blog');

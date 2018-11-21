@@ -20,6 +20,9 @@ include_once 'controllers/profileCtrl.php';
             <!-- Button trigger modal -->
             <button type="button" class="form-control mb-3 red border-danger font-weight-bold text-white" data-toggle="modal" data-target="#basicExampleModal"><?= DELETE_ACCOUNT ?></button>
         </div>
+        <div class="col-md-12">
+            <a href="createEvent.php"><input type="submit" name="create" id="create" class="form-control mb-3 font-weight-bold" value="<?= NAV_CREATE ?>" /></a>
+        </div>
     </div>
 
     <!-- Modal -->
@@ -39,7 +42,6 @@ include_once 'controllers/profileCtrl.php';
             </div>
         </div>
     </div>
-
 
 </div>
 <?php include_once 'footer.php'; ?>
