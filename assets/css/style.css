@@ -15,6 +15,10 @@
 }
 .font-title{
     font-family: 'Alex Brush', cursive;
+    color: black;
+}
+.size{
+    font-size: 1.8rem;
 }
 .container{
     margin-top: 8.7rem;
@@ -23,11 +27,6 @@
 body{
     font-family: 'Abel', sans-serif;
     background-image: url(../img/calendar-bg.jpeg);
-}
-span{
-    font-family: 'Alex Brush', cursive;
-    font-size: 1.8rem;
-    color: black;
 }
 footer{
     bottom: 0;

@@ -1,6 +1,6 @@
 <?php
 
-class users extends database {
+class users {
 
     public $id = '';
     public $lastname = '';
@@ -14,8 +14,8 @@ class users extends database {
      * Méthode magique __construct
      */
     public function __construct() {
-        parent::__construct();
-        $this->dbConnect();
+        $database = databaseSingleton::getInstance();
+        $this->db = $database->db;
     }
 
     /**

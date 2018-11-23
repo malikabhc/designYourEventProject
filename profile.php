@@ -21,7 +21,7 @@ include_once 'controllers/profileCtrl.php';
             <button type="button" class="form-control mb-3 red border-danger font-weight-bold text-white" data-toggle="modal" data-target="#basicExampleModal"><?= DELETE_ACCOUNT ?></button>
         </div>
         <div class="col-md-12">
-            <a href="createEvent.php"><input type="submit" name="create" id="create" class="form-control mb-3 font-weight-bold" value="<?= NAV_CREATE ?>" /></a>
+            <a href="step1create.php"><input type="submit" name="create" id="create" class="form-control mb-3 font-weight-bold" value="<?= NAV_CREATE ?>" /></a>
         </div>
     </div>
 

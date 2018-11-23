@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <!-- Footer -->
         <div class="row">
-            <div class="offset-1 col-lg-3 mt-2 text-center"><a href="blog.php" title="Design-your-Event le Blog"><span>Design-your-Event</span><?= FOOTER_BLOG ?></a></div>
+            <div class="offset-1 col-lg-3 mt-2 text-center"><a href="blog.php" title="Design-your-Event le Blog"><span class="font-title size">Design-your-Event</span><?= FOOTER_BLOG ?></a></div>
             <div class="col-lg-4 mt-2 text-center contact"><a href="contactForm.php" title="Nous contacter"><?= FOOTER_CONTACT ?></a></div>
             <div class="col-lg-4 mt-2 text-center">
                 <a href="http://www.facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook fa-2x"></i></a>
@@ -13,7 +13,7 @@
         </div>
     </div>
     <!-- Copyright -->
-    <div class="text-center">© 2018 - Copyright <span>Design-your-Event</span></div>
+    <div class="text-center">© 2018 - Copyright <span class="font-title size">Design-your-Event</span></div>
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Lien fichier script -->

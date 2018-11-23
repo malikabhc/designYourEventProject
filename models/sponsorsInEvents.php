@@ -1,10 +1,10 @@
 <?php
 
-class contributors {
+class sponsorsInEvents {
 
     public $id = '';
-    public $lastnameContributor = '';
-    public $firstnameContributor = '';
+    public $idSponsors = '';
+    public $idEvents = '';
 
     /**
      * Méthode magique __construct
@@ -18,13 +18,13 @@ class contributors {
      * Méthode permettant l'enregistrement d'un évènement
      * @return boolean
      */
-    public function addContributor() {
-        $query = 'INSERT INTO `ye27d_contributors` (`lastnameContributor`, `firstnameContributor`) '
-                . 'VALUES (:lastnameContributor, :firstnameContributor)';
+    public function addSponsorsInEvent() {
+        $query = 'INSERT INTO `ye27d_sponsorsInEvent` (`idSponsors`, `idEvents`) '
+                . 'VALUES (:idSponsors, :idEvents)';
         // Etant donné que les données vont être entrées par l'utilisateur on fait un prepare puis un bindValue avec marqueur nominatif et on finit par un execute
         $result = $this->db->prepare($query);
-        $result->bindValue(':lastnameContributor', $this->lastnameContributor, PDO::PARAM_STR);
-        $result->bindValue(':firstnameContributor', $this->firstnameContributor, PDO::PARAM_STR);
+        $result->bindValue(':idSponsors', $this->idSponsors, PDO::PARAM_STR);
+        $result->bindValue(':idEvents', $this->idEvents, PDO::PARAM_STR);
         $result->execute();
 
         return $this->db->lastInsertId();

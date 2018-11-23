@@ -1,6 +1,6 @@
 <?php
 
-class events extends database {
+class events {
 
     public $id = '';
     public $eventName = '';
@@ -12,13 +12,16 @@ class events extends database {
     public $twitterLink = '';
     public $instagramLink = '';
     public $snapchatLink = '';
+    public $idUsers = '';
+    public $idEventsType = '';
+    public $idEventsCategory = '';
 
     /**
      * Méthode magique __construct
      */
     public function __construct() {
-        parent::__construct();
-        $this->dbConnect();
+        $database = databaseSingleton::getInstance();
+        $this->db = $database->db;
     }
 
     /**
@@ -26,8 +29,8 @@ class events extends database {
      * @return boolean
      */
     public function eventRegister() {
-        $query = 'INSERT INTO `ye27d_events` (`eventName`, `address`, `dateHourStart`, `dateHourFinish`, `eventDescription`, `facebookLink`, `twitterLink`, `instagramLink`, `snapchatLink`) '
-                . 'VALUES (:eventName, :address, :dateHourStart, :dateHourFinish, :eventDescription, :facebookLink, :twitterLink, :instagramLink, :snapchatLink)';
+        $query = 'INSERT INTO `ye27d_events` (`eventName`, `address`, `dateHourStart`, `dateHourFinish`, `eventDescription`, `facebookLink`, `twitterLink`, `instagramLink`, `snapchatLink`, `idUsers`, `idEventsType`, `idEventsCategory`) '
+                . 'VALUES (:eventName, :address, :dateHourStart, :dateHourFinish, :eventDescription, :facebookLink, :twitterLink, :instagramLink, :snapchatLink, :idUsers, :idEventsType, :idEventsCategory)';
         // Etant donné que les données vont être entrées par l'utilisateur on fait un prepare puis un bindValue avec marqueur nominatif et on finit par un execute
         $result = $this->db->prepare($query);
         $result->bindValue(':eventName', $this->eventName, PDO::PARAM_STR);
@@ -39,8 +42,12 @@ class events extends database {
         $result->bindValue(':twitterLink', $this->twitterLink, PDO::PARAM_STR);
         $result->bindValue(':instagramLink', $this->instagramLink, PDO::PARAM_STR);
         $result->bindValue(':snapchatLink', $this->snapchatLink, PDO::PARAM_STR);
-
-        return $result->execute();
+        $result->bindValue(':idUsers', $this->idUsers, PDO::PARAM_STR);
+        $result->bindValue(':idEventsType', $this->idEventsType, PDO::PARAM_STR);
+        $result->bindValue(':idEventsCategory', $this->idEventsCategory, PDO::PARAM_STR);
+        $result->execute();
+        
+        return $this->db->lastInsertId();
     }
 
 } // Accolade de fin class events

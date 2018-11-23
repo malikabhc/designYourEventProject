@@ -58,9 +58,9 @@ define('REQUIRE_EVENT_DESCRIPTION', 'La description de l\'évènement est obliga
 
 
 // Connexion
-define('USER_INSCRIPTION_SUCCESS','Votre inscription a bien été prise en compte !');
-define('USER_CONNECTION_SUCCESS','Connecté avec succès');
-define('USER_CONNECTION_ERROR','Erreur lors de la connexion');
+define('USER_INSCRIPTION_SUCCESS','Votre inscription a bien été prise en compte ! '
+        . 'Vous pouvez vous connecter dès à présent');
+define('USER_CONNECTION_ERROR','Echec de la connexion');
 
 // Menu
 define('NAV_WELCOME','Bienvenue %s');
@@ -76,6 +76,8 @@ define('DELETE', 'Supprimer');
 define('CANCEL', 'Annuler');
 
 // Création évènement
+define('EVENT_TYPE', 'Type d\'évènement');
+define('EVENT_CATEGORY', 'Catégorie d\'évènement');
 define('EVENT_NAME', 'Nom de l\'évènement');
 define('EVENT_LOCATION', 'Lieu de l\'évènement');
 define('DATE_START', 'Date de début');
@@ -89,11 +91,23 @@ define('INSTAGRAM_LINK', 'Lien Instagram');
 define('SNAPCHAT_LINK', 'Lien Snapchat');
 define('CREATE_EVENT', 'Créer un évènement');
 
+//Contributors
+define('CONTRIBUTORS_LASTNAME', 'Nom de l\'intervenant');
+define('CONTRIBUTORS_FIRSTNAME', 'Prénom de l\'intervenant');
+
+//Contributors
+define('SPONSOR_NAME', 'Nom du partenaire');
+define('SPONSOR_LINK', 'Lien');
+define('SPONSOR_LOGO', 'Logo');
+
 // Etape
 define('STEP_ONE', 'Étape 1 : Renseignement des données');
-define('STEP_TWO', 'Étape 2 : Le Design');
-define('STEP_THREE', 'Étape 3 : Le Résultat');
+define('STEP_TWO', 'Étape 2 : L\'intervenant');
+define('STEP_THREE', 'Étape 3 : Les Partenaires');
+define('STEP_FOUR', 'Étape 4 : Le Design');
+define('STEP_FIVE', 'Étape 5 : Le Résultat');
 define('NEXT_STEP', 'Étape suivante');
+
 // Footer
 define('FOOTER_CONTACT', 'Nous contacter');
 define('FOOTER_BLOG', 'le Blog');

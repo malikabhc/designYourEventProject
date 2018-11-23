@@ -2,17 +2,33 @@
 
 include 'configuration.php';
 
+// Initialisation des valeurs par défaut
+$hourFinish = '00:00';
+$dateFinish = '1970-01-01';
+$facebookLink = '';
+$twitterLink = '';
+$instagramLink = '';
+$snapchatLink = '';
+
 // Initialisation du tableau d'erreur
 $formError = array();
 
-//$hourStart = '00:00'; 
-//$hourFinish = '00:00'; 
-//$dateStart = '1900-01-01';
-//$dateFinish = '1900-01-01';
-
 // Si $_POST['submit'] existe on instancie l'objet user
-if (isset($_POST['submitEvent'])) {
-// Si $_POST['lastname'] n'est pas vide on sécurise avec le htmlspecialchars et on stocke dans la variable lastname
+if (isset($_POST['submitEventOne'])) {
+    // Si $_POST['eventName'] n'est pas vide on sécurise avec le htmlspecialchars et on stocke dans la variable lastname
+    if (!empty($_POST['eventCategory'])) {
+        $eventCategory = htmlspecialchars($_POST['eventCategory']);
+// Sinon on indique que le remplissage du champ est obligatoire
+    } else {
+        $formError['eventCategory'] = REQUIRE_EVENT_NAME;
+    }
+
+    if (!empty($_POST['eventType'])) {
+        $eventType = htmlspecialchars($_POST['eventType']);
+    } else {
+        $formError['eventType'] = REQUIRE_EVENT_NAME;
+    }
+
     if (!empty($_POST['eventName'])) {
         $eventName = htmlspecialchars($_POST['eventName']);
 // Sinon on indique que le remplissage du champ est obligatoire
@@ -69,19 +85,34 @@ if (isset($_POST['submitEvent'])) {
     }
 
     if (count($formError) == 0) {
-// Si $_POST['submitRegister'] existe et que le $formError ne comporte aucune erreur, on instancie la classe users
+// Si le $formError ne comporte aucune erreur, on instancie la classe events
         $event = new events();
 // On hydrate
         $event->eventName = $eventName;
         $event->address = $address;
-        $event->dateHourStart = $dateStart . '' . $hourStart;
-        $event->dateHourFinish = $dateFinish . '' . $hourFinish;
+        $event->dateHourStart = $dateStart . ' ' . $hourStart;
+        $event->dateHourFinish = $dateFinish . ' ' . $hourFinish;
         $event->eventDescription = $eventDescription;
         $event->facebookLink = $facebookLink;
         $event->twitterLink = $twitterLink;
         $event->instagramLink = $instagramLink;
         $event->snapchatLink = $snapchatLink;
 
-        $event->eventRegister();
+        $event->idUsers = $_SESSION['id'];
+        $event->idEventsType = $_POST['eventType'];
+        $event->idEventsCategory = $_POST['eventCategory'];
+
+        $addedEventId = $event->eventRegister();
+        
+        // Lorsque la l'évènement est enregistré une redirection est effectuée vers l'étape suivante en ajoutant l'id
+        header('Location: step2create.php?id=' . $addedEventId);
     }
 }
+
+// Instanciation de l'objet $eventCategory afin d'afficher les données de la table eventCategory dans le select
+$eventCategory = new eventCategory();
+$eventCategoryList = $eventCategory->getEventCategoryList();
+
+// Instanciation de l'objet $eventTypes afin d'afficher les données de la table eventType dans le select
+$eventTypes = new eventType();
+$eventTypeList = $eventTypes->getEventTypeList();
