@@ -15,7 +15,6 @@ class eventType {
     
     /**
      * Méthode permettant de récuperer tous les élements de la table
-     * @return type
      */
         public function getEventTypeList() {
             $result = array();

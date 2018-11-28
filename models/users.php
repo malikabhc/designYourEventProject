@@ -20,7 +20,6 @@ class users {
 
     /**
      * Méthode permettant l'enregistrement d'un utilisateur
-     * @return boolean
      */
     public function userRegister() {
         $query = 'INSERT INTO `ye27d_users` (`lastname`, `firstname`, `birthdate`, `mail`, `password`, `idCity`) '
@@ -38,7 +37,6 @@ class users {
 
     /**
      * Méthode permettant de faire la connexion de l'utilisateur
-     * @return boolean
      */
     public function userConnection() {
         $state = false;
@@ -79,7 +77,6 @@ class users {
 
     /**
      * Méthode qui permet à l'utilisateur d'afficher ses données
-     * 
      */
     public function displayUserInformations() {
         $query = 'SELECT `ye27d_users`.`id`, `ye27d_users`.`lastname`, `ye27d_users`.`firstname`, `ye27d_users`.`birthdate`, `ye27d_users`.`mail`, `ye27d_city`.`cityName`, `ye27d_city`.`postalCode`  '
@@ -99,7 +96,6 @@ class users {
 
     /**
      * Méthode qui permet à l'utilisateur de modifier ses données
-     *  
      */
     public function updateUserInformations() {
         $query = 'UPDATE `ye27d_users` '
@@ -121,7 +117,6 @@ class users {
 
     /**
      * Méthode qui permet à l'utilisateur de supprimer son compte
-     * 
      */
     public function removeUser() {
         $query = 'DELETE FROM `ye27d_users` '

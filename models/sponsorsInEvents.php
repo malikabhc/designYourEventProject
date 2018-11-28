@@ -15,11 +15,10 @@ class sponsorsInEvents {
     }
 
     /**
-     * Méthode permettant l'enregistrement d'un évènement
-     * @return boolean
+     * Méthode permettant l'enregistrement des sponsors d'un évènement
      */
-    public function addSponsorsInEvent() {
-        $query = 'INSERT INTO `ye27d_sponsorsInEvent` (`idSponsors`, `idEvents`) '
+    public function addSponsorInEvent() {
+        $query = 'INSERT INTO `ye27d_sponsorsInEvents` (`idSponsors`, `idEvents`) '
                 . 'VALUES (:idSponsors, :idEvents)';
         // Etant donné que les données vont être entrées par l'utilisateur on fait un prepare puis un bindValue avec marqueur nominatif et on finit par un execute
         $result = $this->db->prepare($query);
@@ -32,4 +31,4 @@ class sponsorsInEvents {
 
 }
 
-// Accolade de fin class contributors
+// Accolade de fin class sponsorsInEvents

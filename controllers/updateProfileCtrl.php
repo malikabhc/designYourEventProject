@@ -24,7 +24,7 @@ if (isset($_POST['postalCodeSearch'])) {
     if (isset($_POST['submitUpdate'])) {
 // Si $_POST['lastname'] n'est pas vide on sécurise avec le htmlspecialchars et on stocke dans la variable lastname
         if (!empty($_POST['lastname'])) {
-            $profile->lastname = htmlspecialchars($_POST['lastname']);
+            $profile->lastname = htmlspecialchars(ucfirst(trim($_POST['lastname'])));
             // Si les données entrées dans le champ ne correspondent pas à la regex on affiche un message d'erreur
             if (!preg_match($regexName, $_POST['lastname'])) {
                 $formError['lastname'] = ERROR_LASTNAME;
@@ -35,7 +35,7 @@ if (isset($_POST['postalCodeSearch'])) {
         }
 
         if (!empty($_POST['firstname'])) {
-            $profile->firstname = htmlspecialchars($_POST['firstname']);
+            $profile->firstname = htmlspecialchars(ucfirst(trim($_POST['firstname'])));
             if (!preg_match($regexName, $_POST['firstname'])) {
                 $formError['firstname'] = ERROR_FIRSTNAME;
             }
@@ -67,7 +67,7 @@ if (isset($_POST['postalCodeSearch'])) {
         }
 
         if (!empty($_POST['mailUpdate'])) {
-            $profile->mail = htmlspecialchars($_POST['mailUpdate']);
+            $profile->mail = htmlspecialchars(strtolower($_POST['mailUpdate']));
             // filter_var permet de filtrer la variable $mailUpdate afin qu'elle corresponde aux normes email classique
             if (!filter_var($_POST['mailUpdate'], FILTER_VALIDATE_EMAIL)) {
                 $formError['mailUpdate'] = ERROR_MAIL;
@@ -87,4 +87,5 @@ if (isset($_POST['postalCodeSearch'])) {
     }
 }
 
+// On appelle la méthode displayUserInformations pour afficher les données de l'utilisateur
 $profileUser = $profile->displayUserInformations();

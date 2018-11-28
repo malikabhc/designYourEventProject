@@ -92,8 +92,8 @@ define('SNAPCHAT_LINK', 'Lien Snapchat');
 define('CREATE_EVENT', 'Créer un évènement');
 
 //Contributors
-define('CONTRIBUTORS_LASTNAME', 'Nom de l\'intervenant');
-define('CONTRIBUTORS_FIRSTNAME', 'Prénom de l\'intervenant');
+define('CONTRIBUTOR_LASTNAME', 'Nom de l\'intervenant');
+define('CONTRIBUTOR_FIRSTNAME', 'Prénom de l\'intervenant');
 
 //Contributors
 define('SPONSOR_NAME', 'Nom du partenaire');
@@ -101,12 +101,12 @@ define('SPONSOR_LINK', 'Lien');
 define('SPONSOR_LOGO', 'Logo');
 
 // Etape
-define('STEP_ONE', 'Étape 1 : Renseignement des données');
+define('STEP_ONE', 'Étape 1 : Choix du design & Renseignement des données');
 define('STEP_TWO', 'Étape 2 : L\'intervenant');
 define('STEP_THREE', 'Étape 3 : Les Partenaires');
-define('STEP_FOUR', 'Étape 4 : Le Design');
-define('STEP_FIVE', 'Étape 5 : Le Résultat');
+define('STEP_FOUR', 'Étape 4 : Le Résultat');
 define('NEXT_STEP', 'Étape suivante');
+define('DISPLAY_RESULT', 'Afficher le résultat');
 
 // Footer
 define('FOOTER_CONTACT', 'Nous contacter');

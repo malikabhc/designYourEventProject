@@ -31,7 +31,7 @@ if (isset($_POST['postalCodeSearch'])) {
     if (isset($_POST['submitRegister'])) {
 // Si $_POST['lastname'] n'est pas vide on sécurise avec le htmlspecialchars et on stocke dans la variable lastname
         if (!empty($_POST['lastname'])) {
-            $lastname = htmlspecialchars($_POST['lastname']);
+            $lastname = htmlspecialchars(ucfirst(trim($_POST['lastname'])));
             // Si les données entrées dans le champ ne correspondent pas à la regex on affiche un message d'erreur
             if (!preg_match($regexName, $lastname)) {
                 $formError['lastname'] = ERROR_LASTNAME;
@@ -42,7 +42,7 @@ if (isset($_POST['postalCodeSearch'])) {
         }
 
         if (!empty($_POST['firstname'])) {
-            $firstname = htmlspecialchars($_POST['firstname']);
+            $firstname = htmlspecialchars(ucfirst(trim($_POST['firstname'])));
             if (!preg_match($regexName, $firstname)) {
                 $formError['firstname'] = ERROR_FIRSTNAME;
             }
@@ -74,7 +74,7 @@ if (isset($_POST['postalCodeSearch'])) {
         }
 
         if (!empty($_POST['mailRegister'])) {
-            $mailRegister = htmlspecialchars($_POST['mailRegister']);
+            $mailRegister = htmlspecialchars(strtolower($_POST['mailRegister']));
             // filter_var permet de filtrer la variable $mailRegister afin qu'elle corresponde aux normes email classique
             if (!filter_var($mailRegister, FILTER_VALIDATE_EMAIL)) {
                 $formError['mailRegister'] = ERROR_MAIL;
@@ -120,7 +120,7 @@ $message = '';
 
 if (isset($_POST['submitLogin'])) {
     if (!empty($_POST['mailLogin'])) {
-        $mailLogin = htmlspecialchars($_POST['mailLogin']);
+        $mailLogin = htmlspecialchars(strtolower($_POST['mailLogin']));
         if (!filter_var($mailLogin, FILTER_VALIDATE_EMAIL)) {
             $formError['mailLogin'] = ERROR_MAIL;
         }
@@ -148,7 +148,7 @@ if (isset($_POST['submitLogin'])) {
                 $_SESSION['firstname'] = $user->firstname;
                 $_SESSION['isConnect'] = true;
                 // Permet de recharger la page après connexion
-                header('location: profile.php');
+                header('Location: profile.php');
             } else {
                 // Si la connexion échoue on affiche un message d'erreur
                 $message = USER_CONNECTION_ERROR;

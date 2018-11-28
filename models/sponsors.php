@@ -5,8 +5,7 @@ class sponsors {
     public $id = '';
     public $sponsorName = '';
     public $sponsorLink = '';
-    public $sponsorLogo = '';
-
+    
     /**
      * Méthode magique __construct
      */
@@ -16,17 +15,15 @@ class sponsors {
     }
 
     /**
-     * Méthode permettant l'enregistrement d'un évènement
-     * @return boolean
+     * Méthode permettant l'enregistrement des sponsors d'un évènement
      */
-    public function addSponsors() {
-        $query = 'INSERT INTO `ye27d_sponsors` (`sponsorName`, `sponsorLink`, `sponsorLogo`) '
-                . 'VALUES (:sponsorName, :sponsorLink, :sponsorLogo)';
+    public function addSponsor() {
+        $query = 'INSERT INTO `ye27d_sponsors` (`sponsorName`, `sponsorLink`) '
+                . 'VALUES (:sponsorName, :sponsorLink)';
         // Etant donné que les données vont être entrées par l'utilisateur on fait un prepare puis un bindValue avec marqueur nominatif et on finit par un execute
         $result = $this->db->prepare($query);
         $result->bindValue(':sponsorName', $this->sponsorName, PDO::PARAM_STR);
         $result->bindValue(':sponsorLink', $this->sponsorLink, PDO::PARAM_STR);
-        $result->bindValue(':sponsorLogo', $this->sponsorLogo, PDO::PARAM_STR);
         $result->execute();
 
         return $this->db->lastInsertId();
@@ -34,4 +31,4 @@ class sponsors {
 
 }
 
-// Accolade de fin class contributors
+// Accolade de fin class sponsors

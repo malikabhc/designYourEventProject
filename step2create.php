@@ -1,5 +1,5 @@
 <?php
-$title = 'Design-your-Event | Étape 2 - Création';
+$title = 'Étape 2 - Création | Design-your-Event';
 include_once 'header.php';
 include_once 'controllers/step2createCtrl.php';
 ?>
@@ -9,17 +9,17 @@ include_once 'controllers/step2createCtrl.php';
 
     <form action="#" method="POST" class="form-group mt-2 mb-3" id="formStepTwo">
 
-        <label for="contributorsLastname" class="font-weight-bold"><?= CONTRIBUTORS_LASTNAME ?> <span class="text-danger">*</span></label>
-        <input type="text" name="contributorsLastname" id="contributorsLastname" class="form-control mb-2" placeholder="<?= CONTRIBUTORS_LASTNAME ?>" value="<?= isset($contributorsLastname) ? $contributorsLastname : '' ?>" />
-        <p class="text-danger font-weight-bold"><?= isset($formError['contributorsLastname']) ? $formError['contributorsLastname'] : ''; ?></p>
+        <label for="contributorLastname" class="font-weight-bold"><?= CONTRIBUTOR_LASTNAME ?> <span class="text-danger">*</span></label>
+        <input type="text" name="contributorLastname" id="contributorLastname" class="form-control mb-2" placeholder="<?= CONTRIBUTOR_LASTNAME ?>" value="<?= isset($contributorLastname) ? $contributorLastname : '' ?>" />
+        <p class="text-danger font-weight-bold"><?= isset($formError['contributorLastname']) ? $formError['contributorLastname'] : ''; ?></p>
 
-        <label for="contributorsFirstname" class="font-weight-bold"><?= CONTRIBUTORS_FIRSTNAME ?> <span class="text-danger">*</span></label>
-        <input type="text" name="contributorsFirstname" id="contributorsFirstname" class="form-control mb-2" placeholder="<?= CONTRIBUTORS_FIRSTNAME ?>" value="<?= isset($contributorsFirstname) ? $contributorsFirstname : '' ?>" />
-        <p class="text-danger font-weight-bold"><?= isset($formError['contributorsFirstname']) ? $formError['contributorsFirstname'] : ''; ?></p>
+        <label for="contributorFirstname" class="font-weight-bold"><?= CONTRIBUTOR_FIRSTNAME ?> <span class="text-danger">*</span></label>
+        <input type="text" name="contributorFirstname" id="contributorFirstname" class="form-control mb-2" placeholder="<?= CONTRIBUTOR_FIRSTNAME ?>" value="<?= isset($contributorFirstname) ? $contributorFirstname : '' ?>" />
+        <p class="text-danger font-weight-bold"><?= isset($formError['contributorFirstname']) ? $formError['contributorFirstname'] : ''; ?></p>
 
         <p class="font-weight-bold">(<span class="text-danger">*</span>) : Champ obligatoire</p>
 
-        <a href="step3create.php"><input type="submit" name="submitEventTwo" id="submitEventTwo" class="form-control mt-2 font-weight-bold" value="<?= NEXT_STEP ?>" /></a>
+        <input type="submit" name="submitEventTwo" id="submitEventTwo" class="form-control mt-2 font-weight-bold" value="<?= NEXT_STEP ?>" />
     </form>
 </div>
 <?php include 'footer.php'; ?>

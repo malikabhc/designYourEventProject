@@ -26,11 +26,12 @@ class events {
 
     /**
      * Méthode permettant l'enregistrement d'un évènement
-     * @return boolean
      */
     public function eventRegister() {
-        $query = 'INSERT INTO `ye27d_events` (`eventName`, `address`, `dateHourStart`, `dateHourFinish`, `eventDescription`, `facebookLink`, `twitterLink`, `instagramLink`, `snapchatLink`, `idUsers`, `idEventsType`, `idEventsCategory`) '
-                . 'VALUES (:eventName, :address, :dateHourStart, :dateHourFinish, :eventDescription, :facebookLink, :twitterLink, :instagramLink, :snapchatLink, :idUsers, :idEventsType, :idEventsCategory)';
+        $query = 'INSERT INTO `ye27d_events` (`eventName`, `address`, `dateHourStart`, `dateHourFinish`, `eventDescription`, `facebookLink`, '
+                . '`twitterLink`, `instagramLink`, `snapchatLink`, `idUsers`, `idEventsType`, `idEventsCategory`) '
+                . 'VALUES (:eventName, :address, :dateHourStart, :dateHourFinish, :eventDescription, :facebookLink, :twitterLink, '
+                . ':instagramLink, :snapchatLink, :idUsers, :idEventsType, :idEventsCategory)';
         // Etant donné que les données vont être entrées par l'utilisateur on fait un prepare puis un bindValue avec marqueur nominatif et on finit par un execute
         $result = $this->db->prepare($query);
         $result->bindValue(':eventName', $this->eventName, PDO::PARAM_STR);
@@ -46,8 +47,36 @@ class events {
         $result->bindValue(':idEventsType', $this->idEventsType, PDO::PARAM_STR);
         $result->bindValue(':idEventsCategory', $this->idEventsCategory, PDO::PARAM_STR);
         $result->execute();
-        
+
         return $this->db->lastInsertId();
     }
+/**
+ * Méthode permettant d'afficher les données de l'évènement
+ */
+    public function displayEvent() {
+        $query = 'SELECT `ye27d_events`.`id`, `ye27d_events`.`eventName`, `ye27d_events`.`address`, `ye27d_events`.`dateHourStart`, `ye27d_events`.`dateHourFinish`, '
+                . '`ye27d_events`.`eventDescription`, `ye27d_events`.`facebookLink`, `ye27d_events`.`twitterLink`, `ye27d_events`.`instagramLink`, `ye27d_events`.`snapchatLink`, '
+                . '`ye27d_events`.`idUsers`, `ye27d_events`.`idEventsType`, `ye27d_events`.`idEventsCategory`, `ye27d_events`.`idThemes`, `ye27d_contributors`.`contributorLastname`, '
+                . '`ye27d_contributors`.`contributorFirstname`, `ye27d_contributorsInEvents`. `idEvents`, `ye27d_contributorsInEvents`.`idContributors`, `ye27d_sponsors`.`sponsorName`, '
+                . '`ye27d_sponsors`.`sponsorLink`, `ye27d_sponsorsInEvents`.`idSponsors`, `ye27d_sponsorsInEvents`.`idEvents` '
+                . 'FROM `ye27d_events` '
+                . 'INNER JOIN `ye27d_contributorsInEvents` '
+                . 'ON `ye27d_events`.`id` = `ye27d_contributorsInEvents`.`idEvents` '
+                . 'INNER JOIN `ye27d_contributors` '
+                . 'ON `ye27d_contributorsInEvents`.`idContributors` = `ye27d_contributors`.`id` '
+                . 'INNER JOIN `ye27d_sponsorsInEvents` '
+                . 'ON `ye27d_events`.`id` = `ye27d_sponsorsInEvents`.`idEvents` '
+                . 'INNER JOIN `ye27d_sponsors` '
+                . 'ON `ye27d_sponsorsInEvents`.`idSponsors` = `ye27d_sponsors`.`id`';
+        $result = $this->db->prepare($query);
+        $result->execute();
+        // Si $result est un objet on fait un fetch pour afficher les données de l'utilisateur
+        if (is_object($result)) {
+            $isObjectResult = $result->fetch(PDO::FETCH_OBJ);
+        }
+        return $isObjectResult;
+    }
 
-} // Accolade de fin class events
+}
+
+// Accolade de fin class events

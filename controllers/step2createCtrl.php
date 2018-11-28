@@ -5,22 +5,20 @@ include 'configuration.php';
 // Initialisation du tableau d'erreur
 $formError = array();
 
-var_dump($_POST);
-
 if (isset($_POST['submitEventTwo'])) {
 
-    if (!empty($_POST['contributorsLastname'])) {
-        $contributorsLastname = htmlspecialchars($_POST['contributorsLastname']);
+    if (!empty($_POST['contributorLastname'])) {
+        $contributorLastname = htmlspecialchars(ucfirst(trim($_POST['contributorLastname'])));
 // Sinon on indique que le remplissage du champ est obligatoire
     } else {
-        $formError['contributorsLastname'] = REQUIRE_CONTRIBUTOR_LASTNAME;
+        $formError['contributorLastname'] = REQUIRE_CONTRIBUTOR_LASTNAME;
     }
 
-    if (!empty($_POST['contributorsFirstname'])) {
-        $contributorsFirstname = htmlspecialchars($_POST['contributorsFirstname']);
+    if (!empty($_POST['contributorFirstname'])) {
+        $contributorFirstname = htmlspecialchars(ucfirst(trim($_POST['contributorFirstname'])));
 // Sinon on indique que le remplissage du champ est obligatoire
     } else {
-        $formError['contributorsFirstname'] = REQUIRE_CONTRIBUTOR_FIRSTNAME;
+        $formError['contributorFirstname'] = REQUIRE_CONTRIBUTOR_FIRSTNAME;
     }
 
     if (count($formError) == 0) {
@@ -28,8 +26,8 @@ if (isset($_POST['submitEventTwo'])) {
         $contributorInEvent = new contributorsInEvents();
 
 // On hydrate
-        $contributor->lastnameContributor = $contributorsLastname;
-        $contributor->firstnameContributor = $contributorsFirstname;
+        $contributor->contributorLastname = $contributorLastname;
+        $contributor->contributorFirstname = $contributorFirstname;
         // On appelle la méthode getInstance de la classe dataBaseSingleton
         // J'ai fais un singletone pour pouvoir limiter les appels à la base de données et rester sur la même instance
         $database = databaseSingleton::getInstance();
@@ -46,8 +44,6 @@ if (isset($_POST['submitEventTwo'])) {
 // on appelle la méthode userRegister de l'objet $user pour enregistrer la valeur des attributs dans la classe users
                 $contributorInEvent->idEvents = $_GET['id'];
                 $contributorInEvent->addContributorInEvent();
-                // On met le message de confirmation d'enregistrement dans la variable $formSuccess
-                $formSuccess = ' ';
             }
             // commit valide la transaction en cours, rendant les modifications permanantes
             $database->db->commit();
@@ -56,13 +52,13 @@ if (isset($_POST['submitEventTwo'])) {
             $database->db->rollback();
         }
 
-// Si le $formError ne comporte aucune erreur, on instancie la classe events
+// Si le $formError ne comporte aucune erreur, on instancie la classe contributors
         $contributor = new contributors();
 // On hydrate
-        $contributor->contributorsLastname = $contributorsLastname;
-        $contributor->contributorsFirstname = $contributorsFirstname;
+        $contributor->contributorLastname = $contributorLastname;
+        $contributor->contributorFirstname = $contributorFirstname;
 
-        // Lorsque la l'évènement est enregistré une redirection est effectuée vers l'étape suivante en ajoutant l'id
+        // Lorsque l'évènement est enregistré une redirection est effectuée vers l'étape suivante en ajoutant l'id
         header('Location: step3create.php?id=' . $_GET['id']);
     }
 }

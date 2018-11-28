@@ -15,8 +15,7 @@ class contributorsInEvents {
     }
 
     /**
-     * Méthode permettant l'enregistrement d'un évènement
-     * @return boolean
+     * Méthode permettant l'enregistrement des participants d'un évènement
      */
     public function addContributorInEvent() {
         $query = 'INSERT INTO `ye27d_contributorsInEvents` (`idEvents`, `idContributors`) '

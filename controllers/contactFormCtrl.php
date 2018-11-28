@@ -7,7 +7,9 @@ $regexText = '/^[a-zA-Zàáâãäåçèéêëìíîïðòóôõöùúûüýÿ\- 
 
 if (isset($_POST['contactFormSubmit'])) {
     if (!empty($_POST['lastname'])) {
-        $lastname = htmlspecialchars($_POST['lastname']);
+        // UCfirst permet de mettre le premier caractère en majuscules
+        // Trim enlève les espaces au début et à la fin de la chaîne de caractères
+        $lastname = htmlspecialchars(ucfirst(trim($_POST['lastname'])));
         // Si les données entrées dans le champ ne correspondent pas à la regex on affiche un message d'erreur
         if (!preg_match($regexText, $lastname)) {
             $formError['lastname'] = ERROR_LASTNAME;
@@ -18,7 +20,7 @@ if (isset($_POST['contactFormSubmit'])) {
     }
 
     if (!empty($_POST['firstname'])) {
-        $firstname = htmlspecialchars($_POST['firstname']);
+        $firstname = htmlspecialchars(ucfirst(trim($_POST['firstname'])));
         if (!preg_match($regexText, $firstname)) {
             $formError['firstname'] = ERROR_FIRSTNAME;
         }
@@ -27,7 +29,8 @@ if (isset($_POST['contactFormSubmit'])) {
     }
 
     if (!empty($_POST['mail'])) {
-        $mailFrom = htmlspecialchars($_POST['mail']);
+        // strtolower met le texte entré dans le champ en miniscule
+        $mailFrom = htmlspecialchars(strtolower(trim($_POST['mail'])));
         // filter_var permet de filtrer la variable $mail afin qu'elle corresponde aux normes email classique
         if (!filter_var($mailFrom, FILTER_VALIDATE_EMAIL)) {
             $formError['mail'] = ERROR_MAIL;

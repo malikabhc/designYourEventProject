@@ -15,7 +15,6 @@ class eventCategory {
     
     /**
      * Méthode permettant de récuperer tous les élements de la table
-     * @return type
      */
         public function getEventCategoryList() {
             $results = array();

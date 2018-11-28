@@ -16,7 +16,6 @@ class city {
 
     /**
      * Méthode permettant de récupérer la ville de l'utilisateur
-     * @return boolean
      */
     public function getCityByPostalCode() {
         $queryResult = array();

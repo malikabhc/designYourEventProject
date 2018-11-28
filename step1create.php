@@ -1,5 +1,5 @@
 <?php
-$title = 'Design-your-Event | Étape 1 - Création';
+$title = 'Étape 1 - Création | Design-your-Event';
 include_once 'header.php';
 include_once 'controllers/step1createCtrl.php';
 ?>

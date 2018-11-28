@@ -30,14 +30,14 @@ if (isset($_POST['submitEventOne'])) {
     }
 
     if (!empty($_POST['eventName'])) {
-        $eventName = htmlspecialchars($_POST['eventName']);
+        $eventName = htmlspecialchars(ucfirst(trim($_POST['eventName'])));
 // Sinon on indique que le remplissage du champ est obligatoire
     } else {
         $formError['eventName'] = REQUIRE_EVENT_NAME;
     }
 
     if (!empty($_POST['address'])) {
-        $address = htmlspecialchars($_POST['address']);
+        $address = htmlspecialchars(ucfirst(trim($_POST['address'])));
     } else {
         $formError['address'] = REQUIRE_ADDRESS;
     }

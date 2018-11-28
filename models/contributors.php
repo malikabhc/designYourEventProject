@@ -3,8 +3,8 @@
 class contributors {
 
     public $id = '';
-    public $lastnameContributor = '';
-    public $firstnameContributor = '';
+    public $contributorLastname = '';
+    public $contributorFirstname = '';
 
     /**
      * Méthode magique __construct
@@ -15,16 +15,15 @@ class contributors {
     }
 
     /**
-     * Méthode permettant l'enregistrement d'un évènement
-     * @return boolean
+     * Méthode permettant l'enregistrement des participants d'un évènement
      */
     public function addContributor() {
-        $query = 'INSERT INTO `ye27d_contributors` (`lastnameContributor`, `firstnameContributor`) '
-                . 'VALUES (:lastnameContributor, :firstnameContributor)';
+        $query = 'INSERT INTO `ye27d_contributors` (`contributorLastname`, `contributorFirstname`) '
+                . 'VALUES (:contributorLastname, :contributorFirstname)';
         // Etant donné que les données vont être entrées par l'utilisateur on fait un prepare puis un bindValue avec marqueur nominatif et on finit par un execute
         $result = $this->db->prepare($query);
-        $result->bindValue(':lastnameContributor', $this->lastnameContributor, PDO::PARAM_STR);
-        $result->bindValue(':firstnameContributor', $this->firstnameContributor, PDO::PARAM_STR);
+        $result->bindValue(':contributorLastname', $this->contributorLastname, PDO::PARAM_STR);
+        $result->bindValue(':contributorFirstname', $this->contributorFirstname, PDO::PARAM_STR);
         $result->execute();
 
         return $this->db->lastInsertId();
