@@ -40,7 +40,7 @@ define('ERROR_MAIL','Erreur dans la saisie de l\'adresse email');
 define('ERROR_PASSWORD','Erreur');
 define('ERROR_PASSWORD_VERIFY','Les mots de passe ne correspondent pas');
 
-// Champ obligatoire
+// Champ obligatoire formulaire inscription/connexion
 define('REQUIRE_LASTNAME', 'Le nom est obligatoire');
 define('REQUIRE_FIRSTNAME', 'Le prénom est obligatoire');
 define('REQUIRE_BIRTHDATE', 'La date de naissance est obligatoire');
@@ -49,13 +49,21 @@ define('REQUIRE_CITY', 'La ville est obligatoire');
 define('REQUIRE_MAIL', 'L\'email est obligatoire');
 define('REQUIRE_PASSWORD', 'Le mot de passe est obligatoire');
 define('REQUIRE_PASSWORD_VERIFY', 'La confirmation du mot de passe est obligatoire');
+
+// Champ obligatoire formulaire de contact
 define('REQUIRE_MESSAGE', 'Le message est obligatoire');
+
+// Champ obligatoire création évènement
+define('REQUIRE_THEME', 'Le choix du thème de l\'évènement est obligatoire');
+define('REQUIRE_EVENT_CATEGORY', 'Le choix de la catégorie d\'évènement est obligatoire');
+define('REQUIRE_EVENT_TYPE', 'Le choix du type d\'évènement est obligatoire');
 define('REQUIRE_EVENT_NAME', 'Le nom de l\'évènement est obligatoire');
 define('REQUIRE_ADDRESS', 'L\'adresse est obligatoire');
 define('REQUIRE_DATE_START', 'La date de début d\'évènement est obligatoire');
 define('REQUIRE_HOUR_START', 'L\'heure de début d\'évènement est obligatoire');
 define('REQUIRE_EVENT_DESCRIPTION', 'La description de l\'évènement est obligatoire');
-
+define('REQUIRE_CONTRIBUTOR_LASTNAME', 'Le nom de l\'intervenant est obligatoire');
+define('REQUIRE_CONTRIBUTOR_FIRSTNAME', 'Le prénom de l\'intervenant est obligatoire');
 
 // Connexion
 define('USER_INSCRIPTION_SUCCESS','Votre inscription a bien été prise en compte ! '
@@ -101,10 +109,11 @@ define('SPONSOR_LINK', 'Lien');
 define('SPONSOR_LOGO', 'Logo');
 
 // Etape
-define('STEP_ONE', 'Étape 1 : Choix du design & Renseignement des données');
-define('STEP_TWO', 'Étape 2 : L\'intervenant');
-define('STEP_THREE', 'Étape 3 : Les Partenaires');
-define('STEP_FOUR', 'Étape 4 : Le Résultat');
+define('STEP_ONE', 'Étape 1 : Choix du design');
+define('STEP_TWO', 'Étape 2 : Renseignement des données');
+define('STEP_THREE', 'Étape 3 : L\'intervenant');
+define('STEP_FOUR', 'Étape 4 : Les Partenaires');
+define('STEP_FIVE', 'Étape 5 : Le Résultat');
 define('NEXT_STEP', 'Étape suivante');
 define('DISPLAY_RESULT', 'Afficher le résultat');
 

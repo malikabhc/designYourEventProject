@@ -15,18 +15,24 @@ $formError = array();
 
 // Si $_POST['submit'] existe on instancie l'objet user
 if (isset($_POST['submitEventOne'])) {
-    // Si $_POST['eventName'] n'est pas vide on sécurise avec le htmlspecialchars et on stocke dans la variable lastname
-    if (!empty($_POST['eventCategory'])) {
-        $eventCategory = htmlspecialchars($_POST['eventCategory']);
+    // Si $_POST['radioTheme'] n'est pas vide on sécurise avec le htmlspecialchars et on stocke dans la variable lastname
+    if (!empty($_POST['radioTheme'])) {
+        $radioTheme = htmlspecialchars($_POST['radioTheme']);
 // Sinon on indique que le remplissage du champ est obligatoire
     } else {
-        $formError['eventCategory'] = REQUIRE_EVENT_NAME;
+        $formError['radioTheme'] = REQUIRE_THEME;
+    }
+
+    if (!empty($_POST['eventCategory'])) {
+        $eventCategory = htmlspecialchars($_POST['eventCategory']);
+    } else {
+        $formError['eventCategory'] = REQUIRE_EVENT_CATEGORY;
     }
 
     if (!empty($_POST['eventType'])) {
         $eventType = htmlspecialchars($_POST['eventType']);
     } else {
-        $formError['eventType'] = REQUIRE_EVENT_NAME;
+        $formError['eventType'] = REQUIRE_EVENT_TYPE;
     }
 
     if (!empty($_POST['eventName'])) {
@@ -101,13 +107,19 @@ if (isset($_POST['submitEventOne'])) {
         $event->idUsers = $_SESSION['id'];
         $event->idEventsType = $_POST['eventType'];
         $event->idEventsCategory = $_POST['eventCategory'];
-
+        $event->idThemes = $_POST['radioTheme'];
         $addedEventId = $event->eventRegister();
-        
-        // Lorsque la l'évènement est enregistré une redirection est effectuée vers l'étape suivante en ajoutant l'id
-        header('Location: step2create.php?id=' . $addedEventId);
+        if ($addedEventId !== false) {
+            // Lorsque l'évènement est enregistré une redirection est effectuée vers l'étape suivante en ajoutant l'id
+            header('Location: step2create.php?id=' . $addedEventId);
+            exit;
+        }
     }
 }
+
+// Instanciation de l'objet $theme afin d'afficher les données de la table themes dans le select
+$eventTheme = new themes();
+$themeList = $eventTheme->getThemesList();
 
 // Instanciation de l'objet $eventCategory afin d'afficher les données de la table eventCategory dans le select
 $eventCategory = new eventCategory();

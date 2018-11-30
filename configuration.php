@@ -16,3 +16,4 @@ include_once 'models/contributors.php';
 include_once 'models/contributorsInEvents.php';
 include_once 'models/sponsors.php';
 include_once 'models/sponsorsInEvents.php';
+include_once 'models/themes.php';

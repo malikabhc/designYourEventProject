@@ -33,6 +33,10 @@ footer{
     width: 100%;
     font-size: 1.3rem;
 }
+.imageTheme{
+    width: 2.5rem;
+    height: 2.5rem;
+}
 
 @media screen and (max-width: 850px){
     .navbar-brand{

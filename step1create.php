@@ -9,6 +9,17 @@ include_once 'controllers/step1createCtrl.php';
 
     <form action="#" method="POST" class="form-group mt-2 mb-3" id="formStepOne">
         
+        <?php foreach ($themeList as $themeDetail) { ?>
+            <div class="form-check form-check-inline mt-2 mb-4">
+                <input class="form-check-input" type="radio" name="radioTheme" id="radioTheme" value="<?= $themeDetail->id ?>">
+                <img src="assets/img/<?= $themeDetail->themeLink ?>" class="imageTheme" />
+                <label class="form-check-label ml-2" for="radioTheme"><?= $themeDetail->themeName ?></label>
+            </div>
+        <?php } ?>
+        <p class="text-danger font-weight-bold"><?= isset($formError['radioTheme']) ? $formError['radioTheme'] : ''; ?></p>
+
+        <h2 class="text-center font-title"><?= STEP_TWO ?></h2>
+
         <label class="font-weight-bold"><?= EVENT_CATEGORY ?> <span class="text-danger">*</span></label>
         <select name="eventCategory" class="custom-select mb-2" id="eventCategory">
             <option selected disabled>Veuillez sélectionner une option</option>
@@ -16,6 +27,8 @@ include_once 'controllers/step1createCtrl.php';
                 <option value="<?= $eventCategoryDetail->id ?>"><?= $eventCategoryDetail->eventCategory ?></option>
             <?php } ?>
         </select>
+        <p class="text-danger font-weight-bold"><?= isset($formError['eventCategory']) ? $formError['eventCategory'] : ''; ?></p>
+
 
         <label class="font-weight-bold"><?= EVENT_TYPE ?> <span class="text-danger">*</span></label>
         <select name="eventType" class="custom-select mb-2" id="eventType">
@@ -24,6 +37,7 @@ include_once 'controllers/step1createCtrl.php';
                 <option value="<?= $eventTypeDetail->id ?>"><?= $eventTypeDetail->eventType ?></option>
             <?php } ?>
         </select>
+        <p class="text-danger font-weight-bold"><?= isset($formError['eventType']) ? $formError['eventType'] : ''; ?></p>
 
         <label for="eventName" class="font-weight-bold"><?= EVENT_NAME ?> <span class="text-danger">*</span></label>
         <input type="text" name="eventName" id="eventName" class="form-control mb-2" placeholder="<?= EVENT_NAME ?>" value="<?= isset($eventName) ? $eventName : '' ?>" />
@@ -70,7 +84,7 @@ include_once 'controllers/step1createCtrl.php';
         <p class="text-danger font-weight-bold"><?= isset($formError['snapchatLink']) ? $formError['snapchatLink'] : ''; ?></p>
 
         <p class="font-weight-bold">(<span class="text-danger">*</span>) : Champ obligatoire</p>
-        
+
         <input type="submit" name="submitEventOne" id="submitEventOne" class="form-control mt-2 font-weight-bold" value="<?= NEXT_STEP ?>" />
     </form>
 </div>

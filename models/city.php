@@ -20,7 +20,8 @@ class city {
     public function getCityByPostalCode() {
         $queryResult = array();
         $query = 'SELECT `id`, `cityName`, `postalCode` FROM `ye27d_city` '
-                . 'WHERE `postalCode` LIKE :postalCode';
+                . 'WHERE `postalCode` LIKE :postalCode '
+                . 'ORDER BY `cityName` ASC';
         // Etant donné que les données vont être entrées par l'utilisateur on fait un prepare puis un bindValue avec marqueur nominatif et on finit par un execute
         $result = $this->db->prepare($query);
         $result->bindValue(':postalCode', $this->postalCode . '%', PDO::PARAM_STR);

@@ -31,6 +31,7 @@ include_once 'controllers/updateProfileCtrl.php';
                 <option value="<?= $cityValue->cityValue . id ?>"></option>
             <?php } ?>
         </select>
+        <p class="text-danger font-weight-bold"><?= isset($formError['city']) ? $formError['city'] : ''; ?></p>
 
         <label for="mailUpdate" class="font-weight-bold"><?= MAIL ?></label>
         <input type="mail" name="mailUpdate" id="mailUpdate" class="form-control mb-2" placeholder="<?= MAIL ?>" value="<?= $userProfile->mail ?>" />

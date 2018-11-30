@@ -20,7 +20,6 @@ if (isset($_POST['postalCodeSearch'])) {
     $regexPostalCode = '/^[0-9]{5}$/';
 
 
-// Si $_POST['submit'] existe on instancie l'objet user
     if (isset($_POST['submitUpdate'])) {
 // Si $_POST['lastname'] n'est pas vide on sécurise avec le htmlspecialchars et on stocke dans la variable lastname
         if (!empty($_POST['lastname'])) {
@@ -64,6 +63,8 @@ if (isset($_POST['postalCodeSearch'])) {
             if (!preg_match($regexNameAndNumber, $_POST['city'])) {
                 $formError['city'] = ERROR_CITY;
             }
+        }else {
+            $formError['city'] = REQUIRE_CITY;
         }
 
         if (!empty($_POST['mailUpdate'])) {

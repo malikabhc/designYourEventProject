@@ -2,6 +2,9 @@
 
 include 'configuration.php';
 
+$sponsorName = '';
+$sponsorLink = '';
+
 // Initialisation du tableau d'erreur
 $formError = array();
 
