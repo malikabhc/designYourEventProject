@@ -1,7 +1,6 @@
 <?php
 $title = 'Design-your-Event | Mon compte';
 include_once 'header.php';
-include_once 'controllers/profileCtrl.php';
 include_once 'controllers/updateProfileCtrl.php';
 ?>
 <div class="container border border-dark teal lighten-1 mb-3">
@@ -26,9 +25,9 @@ include_once 'controllers/updateProfileCtrl.php';
 
         <label for="city" class="font-weight-bold"><?= CITY ?></label>
         <select name="city" id="city" class="form-control">
-            <option selected disabled><?= SELECT_CITY ?></option>
+            <option selected ><?= $userProfile->cityName ?></option>
             <?php foreach ($cityName as $cityValue) { ?>
-                <option value="<?= $cityValue->cityValue . id ?>"></option>
+                <option value="<?= $cityValue->cityValue . id ?>"><?= $userProfile->cityName?></option>
             <?php } ?>
         </select>
         <p class="text-danger font-weight-bold"><?= isset($formError['city']) ? $formError['city'] : ''; ?></p>

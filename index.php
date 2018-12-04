@@ -11,10 +11,10 @@ include_once 'controllers/indexCtrl.php';
     </div>
     <?php if (isset($_POST['submitRegister']) && (count($formError) === 0)) {
         ?> 
-    <h2 class="text-center font-weight-bold mt-2"><?= USER_INSCRIPTION_SUCCESS ?></h2>
+        <h2 class="text-center font-weight-bold mt-2"><?= USER_INSCRIPTION_SUCCESS ?></h2>
         <!-- Formulaire de connexion -->
-    <form action="#" method="POST" class="form-group mt-2 mb-3" id="connection">
-        <h2 class="text-center"><?= $message ?></h2>
+        <form action="#" method="POST" class="form-group mt-2 mb-3" id="connection">
+            <h2 class="text-center"><?= $message ?></h2>
             <label for="mailLogin" class="font-weight-bold"><?= MAIL ?></label>
             <input type="mail" name="mailLogin" id="mailLogin" class="form-control mb-2" placeholder="<?= MAIL ?>" />
             <p class="text-danger font-weight-bold"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
@@ -24,8 +24,8 @@ include_once 'controllers/indexCtrl.php';
             <p class="text-danger font-weight-bold"><?= isset($formError['passwordLogin']) ? $formError['passwordLogin'] : ''; ?></p>
 
             <input type="submit" name="submitLogin" id="submitLogin" class="form-control mt-2 font-weight-bold" value="<?= LOGIN_SUBMIT ?>" />
-    </form>
-<?php } else { ?>
+        </form>
+    <?php } else { ?>
         <!-- Formulaire d'inscription -->
         <form action="#" method="POST" class="form-group mt-2 mb-3" id="inscription">
             <label for="lastname" class="font-weight-bold"><?= LASTNAME ?></label>
@@ -49,7 +49,7 @@ include_once 'controllers/indexCtrl.php';
                 <option selected disabled><?= SELECT_CITY ?></option>
                 <?php foreach ($cityName as $cityValue) { ?>
                     <option value="<?= $cityValue->cityValue . id ?>"></option>
-    <?php } ?>
+                <?php } ?>
             </select>
 
             <label for="mailRegister" class="font-weight-bold"><?= MAIL ?></label>
@@ -66,20 +66,20 @@ include_once 'controllers/indexCtrl.php';
 
             <input type="submit" name="submitRegister" id="submitRegister" class="form-control mt-2 font-weight-bold" value="<?= REGISTER_SUBMIT ?>" />
         </form>
-<?php } ?>
+    <?php } ?>
 
     <!-- Formulaire de connexion -->
-    <form action="#" method="POST" class="form-group mt-2 mb-3" id="connection">
+    <form action="#" method="POST" class="form-group mt-2 mb-3 <?= isset($_SESSION['connectionError']) ? $_SESSION['connectionError'] : null ?>" id="connection">
         <h2 class="text-center"><?= $message ?></h2>
-            <label for="mailLogin" class="font-weight-bold"><?= MAIL ?></label>
-            <input type="mail" name="mailLogin" id="mailLogin" class="form-control mb-2" placeholder="<?= MAIL ?>" />
-            <p class="text-danger font-weight-bold"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
+        <label for="mailLogin" class="font-weight-bold"><?= MAIL ?></label>
+        <input type="mail" name="mailLogin" id="mailLogin" class="form-control mb-2" placeholder="<?= MAIL ?>" />
+        <p class="text-danger font-weight-bold"><?= isset($formError['mailLogin']) ? $formError['mailLogin'] : ''; ?></p>
 
-            <label for="passwordLogin" id="password" class="font-weight-bold"><?= USER_PASSWORD ?></label>
-            <input type="password" name="passwordLogin" id="passwordLogin" class="form-control mb-2" placeholder="<?= USER_PASSWORD ?>" />
-            <p class="text-danger font-weight-bold"><?= isset($formError['passwordLogin']) ? $formError['passwordLogin'] : ''; ?></p>
+        <label for="passwordLogin" id="password" class="font-weight-bold"><?= USER_PASSWORD ?></label>
+        <input type="password" name="passwordLogin" id="passwordLogin" class="form-control mb-2" placeholder="<?= USER_PASSWORD ?>" />
+        <p class="text-danger font-weight-bold"><?= isset($formError['passwordLogin']) ? $formError['passwordLogin'] : ''; ?></p>
 
-            <input type="submit" name="submitLogin" id="submitLogin" class="form-control mt-2 font-weight-bold" value="<?= LOGIN_SUBMIT ?>" />
+        <input type="submit" name="submitLogin" id="submitLogin" class="form-control mt-2 font-weight-bold" value="<?= LOGIN_SUBMIT ?>" />
     </form>
 </div>
 <?php include 'footer.php'; ?>

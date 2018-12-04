@@ -5,7 +5,7 @@ include_once 'controllers/step3createCtrl.php';
 ?>
 <div class="container border border-dark orange lighten-2 mb-3">
     <h1 class="text-center font-title mt-2"><?= CREATE_EVENT ?></h1>
-    <h2 class="text-center font-title"><?= STEP_THREE ?></h2>
+    <h2 class="text-center font-title"><?= STEP_FOUR ?></h2>
 
     <form action="#" method="POST" class="form-group mt-2 mb-3" id="formStepThree">
 

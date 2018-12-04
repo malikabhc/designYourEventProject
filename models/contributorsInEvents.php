@@ -2,9 +2,9 @@
 
 class contributorsInEvents {
 
-    public $id = '';
-    public $idEvents = '';
-    public $idContributors = '';
+    public $id = 0;
+    public $idEvents = 0;
+    public $idContributors = 0;
 
     /**
      * Méthode magique __construct

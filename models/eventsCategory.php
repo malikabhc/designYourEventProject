@@ -2,7 +2,7 @@
 
 class eventCategory {
 
-    public $id = '';
+    public $id = 0;
     public $eventCategory = '';
 
     /**

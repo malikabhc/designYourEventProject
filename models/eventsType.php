@@ -2,7 +2,7 @@
 
 class eventType {
 
-    public $id = '';
+    public $id = 0;
     public $eventType = '';
 
     /**

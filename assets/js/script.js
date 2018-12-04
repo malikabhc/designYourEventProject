@@ -12,6 +12,10 @@ $(document).ready(function () {
         $('#connection').hide();
         $('#inscription').show();
     });
+    if ($('#connection').hasClass('connectionError')){
+        $('#connection').show();
+        $('#inscription').hide();
+    }
 });
 
 
@@ -23,7 +27,7 @@ $(function () {
             $.post("../../controllers/indexCtrl.php", {
                 postalCodeSearch: $("#postalCode").val()
             }, function (cityName) {
-            // Empty vide le select avant de le remplir à l'aide du each
+                // Empty vide le select avant de le remplir à l'aide du each
                 $("#city").empty();
                 // Each est une fonction qui fait une boucle sur les éléments de l'input cityName et les affiches
                 $.each(cityName, function (cityKey, cityValue) {

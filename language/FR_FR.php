@@ -1,4 +1,8 @@
 <?php
+
+//Variable $title
+define('HOME', 'Accueil');
+
 // Index
 define('INDEX_REGISTRATION', 'S\'inscrire');
 define('INDEX_LOGIN', 'Se connecter');
@@ -113,10 +117,14 @@ define('STEP_ONE', 'Étape 1 : Choix du design');
 define('STEP_TWO', 'Étape 2 : Renseignement des données');
 define('STEP_THREE', 'Étape 3 : L\'intervenant');
 define('STEP_FOUR', 'Étape 4 : Les Partenaires');
-define('STEP_FIVE', 'Étape 5 : Le Résultat');
 define('NEXT_STEP', 'Étape suivante');
 define('DISPLAY_RESULT', 'Afficher le résultat');
+
+// Résultat 
+define('YEAR', '2018 ');
+define('EVENT_CREATED_BY', 'Évènement crée par ');
 
 // Footer
 define('FOOTER_CONTACT', 'Nous contacter');
 define('FOOTER_BLOG', 'le Blog');
+

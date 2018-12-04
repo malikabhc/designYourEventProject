@@ -2,7 +2,7 @@
 
 class city {
 
-    public $id = '';
+    public $id = 0;
     public $cityName = '';
     public $postalCode = '';
 

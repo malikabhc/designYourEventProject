@@ -2,7 +2,7 @@
 
 class themes {
 
-    public $id = '';
+    public $id = 0;
     public $className = '';
     public $themeName = '';
     public $themeLink = '';

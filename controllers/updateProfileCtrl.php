@@ -10,6 +10,13 @@ if (isset($_POST['postalCodeSearch'])) {
 
     include_once 'configuration.php';
 
+    // Affichage des données de l'utilisateur
+    if (!empty($_SESSION['id'])) {
+        $profile = new users();
+        $profile->id = $_SESSION['id'];
+        $userProfile = $profile->displayUserInformations();
+    }
+
 // Initialisation du tableau d'erreur
     $formError = array();
 // Déclaration de la regex pour les noms 
@@ -63,7 +70,7 @@ if (isset($_POST['postalCodeSearch'])) {
             if (!preg_match($regexNameAndNumber, $_POST['city'])) {
                 $formError['city'] = ERROR_CITY;
             }
-        }else {
+        } else {
             $formError['city'] = REQUIRE_CITY;
         }
 
@@ -87,6 +94,3 @@ if (isset($_POST['postalCodeSearch'])) {
         }
     }
 }
-
-// On appelle la méthode displayUserInformations pour afficher les données de l'utilisateur
-$profileUser = $profile->displayUserInformations();

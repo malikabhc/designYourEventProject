@@ -2,7 +2,7 @@
 
 class events {
 
-    public $id = '';
+    public $id = 0;
     public $eventName = '';
     public $address = '';
     public $dateHourStart = '';
@@ -12,10 +12,10 @@ class events {
     public $twitterLink = '';
     public $instagramLink = '';
     public $snapchatLink = '';
-    public $idUsers = '';
-    public $idEventsType = '';
-    public $idEventsCategory = '';
-    public $idThemes = '';
+    public $idUsers = 0;
+    public $idEventsType = 0;
+    public $idEventsCategory = 0;
+    public $idThemes = 0;
 
     /**
      * Méthode magique __construct
@@ -80,9 +80,9 @@ class events {
         $result->execute();
         // Si $result est un objet on fait un fetch pour afficher les données de l'évènement
         if (is_object($result)) {
-            $isObjectResult = $result->fetch(PDO::FETCH_OBJ);
+            $objectResult = $result->fetch(PDO::FETCH_OBJ);
         }
-        return $isObjectResult;
+        return $objectResult;
     }
 
 }

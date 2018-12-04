@@ -2,7 +2,7 @@
 
 class sponsors {
 
-    public $id = '';
+    public $id = 0;
     public $sponsorName = '';
     public $sponsorLink = '';
     

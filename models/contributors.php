@@ -2,7 +2,7 @@
 
 class contributors {
 
-    public $id = '';
+    public $id = 0;
     public $contributorLastname = '';
     public $contributorFirstname = '';
 

@@ -2,13 +2,13 @@
 
 class users {
 
-    public $id = '';
+    public $id = 0;
     public $lastname = '';
     public $firstname = '';
     public $birthdate = '';
     public $mail = '';
     public $password = '';
-    public $idCity = '';
+    public $idCity = 0;
 
     /**
      * Méthode magique __construct
@@ -85,13 +85,13 @@ class users {
                 . 'ON `ye27d_users`.`idCity` = `ye27d_city`.`id` '
                 . 'WHERE `ye27d_users`.`id` = :id';
         $result = $this->db->prepare($query);
-        $result->bindvalue(':id', $this->id, PDO::PARAM_INT);
+        $result->bindValue(':id', $this->id, PDO::PARAM_INT);
         $result->execute();
         // Si $result est un objet on fait un fetch pour afficher les données de l'utilisateur
         if (is_object($result)) {
-            $isObjectResult = $result->fetch(PDO::FETCH_OBJ);
+            $objectResult = $result->fetch(PDO::FETCH_OBJ);
         }
-        return $isObjectResult;
+        return $objectResult;
     }
 
     /**
@@ -110,9 +110,9 @@ class users {
         $result->bindValue(':cityName', $this->idCity, PDO::PARAM_INT);
         if (is_object($result)) {
             // Si $result est un objet, on éxécute la requête et on récupère le résultat dans la variable $isObjectResult
-            $isObjectResult = $result->execute();
+            $objectResult = $result->execute();
         }
-        return $isObjectResult;
+        return $objectResult;
     }
 
     /**

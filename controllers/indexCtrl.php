@@ -7,7 +7,6 @@ if (isset($_POST['postalCodeSearch'])) {
     $city->postalCode = htmlspecialchars($_POST['postalCodeSearch']);
     // json_encode permet de faire l'affichage
     echo json_encode($city->getCityByPostalCode());
-    
 } elseif (isset($_POST['mailVerify'])) {
     include '../configuration.php';
     $checkUser = new users();
@@ -17,6 +16,9 @@ if (isset($_POST['postalCodeSearch'])) {
 
     include 'configuration.php';
 
+    if (!isset($_POST['submitLogin'])) {
+        $_SESSION['connectionError'] = 'connectionErro';
+    }
 // Initialisation du tableau d'erreur
     $formError = array();
 // Déclaration de la regex pour les noms 
@@ -93,7 +95,6 @@ if (isset($_POST['postalCodeSearch'])) {
             $formError['passwordVerify'] = REQUIRE_PASSWORD_VERIFY;
         }
 
-
         if (count($formError) == 0) {
             // Si $_POST['submitRegister'] existe et que le $formError ne comporte aucune erreur, on instancie la classe users
             $user = new users();
@@ -130,7 +131,7 @@ if (isset($_POST['submitLogin'])) {
     if (!empty($_POST['passwordLogin'])) {
         $passwordLogin = htmlspecialchars($_POST['passwordLogin']);
     } else {
-        $formError['passwordLogin'] = ERROR_PASSWORD;
+        $formError['passwordLogin'] = REQUIRE_PASSWORD;
     }
 
     if (count($formError) == 0) {
@@ -150,9 +151,14 @@ if (isset($_POST['submitLogin'])) {
                 // Permet de recharger la page après connexion
                 header('Location: profile.php');
             } else {
+                $_SESSION['connectionError'] = 'connectionError';
                 // Si la connexion échoue on affiche un message d'erreur
                 $message = USER_CONNECTION_ERROR;
             }
         }
+    } else {
+        $_SESSION['connectionError'] = 'connectionError';
+        // Si la connexion échoue on affiche un message d'erreur
+        $message = USER_CONNECTION_ERROR;
     }
 }
