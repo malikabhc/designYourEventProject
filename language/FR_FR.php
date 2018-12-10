@@ -1,8 +1,4 @@
 <?php
-
-//Variable $title
-define('HOME', 'Accueil');
-
 // Index
 define('INDEX_REGISTRATION', 'S\'inscrire');
 define('INDEX_LOGIN', 'Se connecter');
@@ -20,7 +16,6 @@ define('USER_PASSWORD_VERIFY','Confirmation de mot de passe');
 
 // Formulaire d'inscription
 define('REGISTER_SUBMIT','S\'inscrire');
-define('USER_ALREADY_EXIST', 'Cet email est lié à un compte existant');
 
 // Modification du profil
 define('UPDATE_SUBMIT','Enregistrer les modifications');
@@ -34,14 +29,13 @@ define('CONTACT_FORM_SUBMIT','Envoyer');
 // Login
 define('LOGIN_SUBMIT','Se connecter');
 
-// Erreur
+// Erreur dans les formulaire
 define('ERROR_LASTNAME','Erreur dans la saisie du nom');
 define('ERROR_FIRSTNAME','Erreur dans la saisie du prénom');
 define('ERROR_BIRTHDATE','Erreur dans la saisie de la date de naissance');
 define('ERROR_POSTAL_CODE','Erreur dans la saisie du code postal');
 define('ERROR_CITY','Erreur dans la saisie de la ville');
 define('ERROR_MAIL','Erreur dans la saisie de l\'adresse email');
-define('ERROR_PASSWORD','Erreur');
 define('ERROR_PASSWORD_VERIFY','Les mots de passe ne correspondent pas');
 
 // Champ obligatoire formulaire inscription/connexion
@@ -103,16 +97,16 @@ define('INSTAGRAM_LINK', 'Lien Instagram');
 define('SNAPCHAT_LINK', 'Lien Snapchat');
 define('CREATE_EVENT', 'Créer un évènement');
 
-//Contributors
+// Etape Contributors
 define('CONTRIBUTOR_LASTNAME', 'Nom de l\'intervenant');
 define('CONTRIBUTOR_FIRSTNAME', 'Prénom de l\'intervenant');
 
-//Contributors
+// Etape Sponsors
 define('SPONSOR_NAME', 'Nom du partenaire');
 define('SPONSOR_LINK', 'Lien');
 define('SPONSOR_LOGO', 'Logo');
 
-// Etape
+// Noms des étapes
 define('STEP_ONE', 'Étape 1 : Choix du design');
 define('STEP_TWO', 'Étape 2 : Renseignement des données');
 define('STEP_THREE', 'Étape 3 : L\'intervenant');
@@ -120,11 +114,12 @@ define('STEP_FOUR', 'Étape 4 : Les Partenaires');
 define('NEXT_STEP', 'Étape suivante');
 define('DISPLAY_RESULT', 'Afficher le résultat');
 
-// Résultat 
+// Page de résultat 
 define('YEAR', '2018 ');
 define('EVENT_CREATED_BY', 'Évènement crée par ');
 
 // Footer
 define('FOOTER_CONTACT', 'Nous contacter');
+define('FOOTER_MENTIONS', 'Mentions légales');
 define('FOOTER_BLOG', 'le Blog');
 

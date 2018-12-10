@@ -11,14 +11,16 @@ if (!empty($_SESSION['id'])) {
 
 // Suppression des données de l'utilisateur
 if (isset($_GET['delete'])) {
-    $removeUser = new users();
-    $removeUser->id = $_SESSION['id'];
-    if ($removeUser->removeUser()) {
+    $deleteUser = new users();
+    $deleteUser->id = $_SESSION['id'];
+    if ($deleteUser->removeUser()) {
         session_unset();
         session_destroy();
         header('Location: index.php');
         $message = 'Votre compte a bien été supprimé';
         exit;
+    } else {
+        $message = 'erreur';
     }
 }
 

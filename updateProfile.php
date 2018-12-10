@@ -25,10 +25,7 @@ include_once 'controllers/updateProfileCtrl.php';
 
         <label for="city" class="font-weight-bold"><?= CITY ?></label>
         <select name="city" id="city" class="form-control">
-            <option selected ><?= $userProfile->cityName ?></option>
-            <?php foreach ($cityName as $cityValue) { ?>
-                <option value="<?= $cityValue->cityValue . id ?>"><?= $userProfile->cityName?></option>
-            <?php } ?>
+            <option selected><?= $userProfile->cityName ?></option>
         </select>
         <p class="text-danger font-weight-bold"><?= isset($formError['city']) ? $formError['city'] : ''; ?></p>
 

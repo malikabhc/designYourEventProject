@@ -1,0 +1,20 @@
+.blueTheme{
+    background-image: url(../img/blue.jpg);
+    font-family: 'Satisfy', cursive;
+    font-size: 2rem;
+}
+.blueTheme .container{
+    background-color: #32B4A4;
+    height: 51rem;
+}
+
+.redTheme{
+    background-image: url(../img/bg-flowers.jpeg);
+    font-family: 'Satisfy', cursive;
+    font-size: 2rem;
+    color: white;
+}
+.redTheme .container{
+    background-color: #B10321;
+    height: 51rem;
+}

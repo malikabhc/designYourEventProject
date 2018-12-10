@@ -25,10 +25,12 @@
     width: 45%;
 }
 body{
+    padding-bottom: 6rem;
     font-family: 'Abel', sans-serif;
     background-image: url(../img/calendar-bg.jpeg);
 }
 footer{
+    position: fixed;
     bottom: 0;
     width: 100%;
     font-size: 1.3rem;
@@ -36,6 +38,9 @@ footer{
 .imageTheme{
     width: 2.5rem;
     height: 2.5rem;
+}
+.text{
+    font-size: 1.2rem;
 }
 
 @media screen and (max-width: 850px){

@@ -29,10 +29,8 @@ class events {
      * Méthode permettant l'enregistrement d'un évènement
      */
     public function eventRegister() {
-        $query = 'INSERT INTO `ye27d_events` (`eventName`, `address`, `dateHourStart`, `dateHourFinish`, `eventDescription`, `facebookLink`, '
-                . '`twitterLink`, `instagramLink`, `snapchatLink`, `idUsers`, `idEventsType`, `idEventsCategory`, `idThemes`) '
-                . 'VALUES (:eventName, :address, :dateHourStart, :dateHourFinish, :eventDescription, :facebookLink, :twitterLink, '
-                . ':instagramLink, :snapchatLink, :idUsers, :idEventsType, :idEventsCategory, :idThemes)';
+        $query = 'INSERT INTO `ye27d_events` (`eventName`, `address`, `dateHourStart`, `dateHourFinish`, `eventDescription`, `facebookLink`, `twitterLink`, `instagramLink`, `snapchatLink`, `idUsers`, `idEventsType`, `idEventsCategory`, `idThemes`) '
+                . 'VALUES (:eventName, :address, :dateHourStart, :dateHourFinish, :eventDescription, :facebookLink, :twitterLink, :instagramLink, :snapchatLink, :idUsers, :idEventsType, :idEventsCategory, :idThemes)';
         // Etant donné que les données vont être entrées par l'utilisateur on fait un prepare puis un bindValue avec marqueur nominatif et on finit par un execute
         $result = $this->db->prepare($query);
         $result->bindValue(':eventName', $this->eventName, PDO::PARAM_STR);
@@ -57,12 +55,10 @@ class events {
      * Méthode permettant d'afficher les données de l'évènement
      */
     public function displayEvent() {
-        $query = 'SELECT  `ye27d_events`.`eventName`, `ye27d_events`.`address`, DATE_FORMAT(`ye27d_events`.`dateHourStart`, \'%Y-%m-%d\') AS `dateStart`, DATE_FORMAT(`ye27d_events`.`dateHourStart`, \'%H:%i\') AS `hourStart`, '
-                . 'DATE_FORMAT(`ye27d_events`.`dateHourFinish`, \'%Y-%m-%d\') AS `dateFinish`, DATE_FORMAT(`ye27d_events`.`dateHourFinish`, \'%H:%i\') AS `hourFinish`, '
-                . '`ye27d_events`.`eventDescription`, `ye27d_events`.`facebookLink`, `ye27d_events`.`twitterLink`, `ye27d_events`.`instagramLink`, `ye27d_events`.`snapchatLink`, '
-                . '`ye27d_contributors`.`contributorLastname`, '
-                . '`ye27d_contributors`.`contributorFirstname`,`ye27d_sponsors`.`sponsorName`, '
-                . '`ye27d_sponsors`.`sponsorLink`, `ye27d_sponsorsInEvents`.`idSponsors` '                
+        $query = 'SELECT  `ye27d_events`.`eventName`, `ye27d_events`.`address`, DATE_FORMAT(`ye27d_events`.`dateHourStart`, \'%Y-%m-%d\') AS `dateStart`, DATE_FORMAT(`ye27d_events`.`dateHourStart`, \'%H:%i\') AS `hourStart`, DATE_FORMAT(`ye27d_events`.`dateHourFinish`, \'%Y-%m-%d\') AS `dateFinish`, DATE_FORMAT(`ye27d_events`.`dateHourFinish`, \'%H:%i\') AS `hourFinish`, `ye27d_events`.`eventDescription`, `ye27d_events`.`facebookLink`, `ye27d_events`.`twitterLink`, `ye27d_events`.`instagramLink`, `ye27d_events`.`snapchatLink`, '
+                . '`ye27d_contributors`.`contributorLastname`, `ye27d_contributors`.`contributorFirstname`, '
+                . '`ye27d_sponsors`.`sponsorName`, `ye27d_sponsors`.`sponsorLink`, '
+                . '`ye27d_themes`.`className` '                
                 . 'FROM `ye27d_events` '
                 . 'INNER JOIN `ye27d_contributorsInEvents` '
                 . 'ON `ye27d_events`.`id` = `ye27d_contributorsInEvents`.`idEvents` '
@@ -74,7 +70,7 @@ class events {
                 . 'ON `ye27d_sponsorsInEvents`.`idSponsors` = `ye27d_sponsors`.`id` '
                 . 'INNER JOIN `ye27d_themes` '
                 . 'ON `ye27d_events`.`idThemes` = `ye27d_themes`.`id` '
-                . 'WHERE `ye27d_events`.id = :id';
+                . 'WHERE `ye27d_events`.`id` = :id';
         $result = $this->db->prepare($query);
         $result->bindValue(':id', $this->id, PDO::PARAM_INT);
         $result->execute();

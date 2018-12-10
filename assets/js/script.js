@@ -48,7 +48,7 @@ $(function () {
                 $('#mailRegister').addClass('text-white').css('background-color', '#f44336');
                 $('#submitRegister').hide();
             } else {
-                $('#mailRegister').removeClass('bg-danger');
+                $('#mailRegister').removeClass('text-white').css('background-color', 'white');
                 $('#submitRegister').show();
             }
         },

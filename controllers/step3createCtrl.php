@@ -56,6 +56,6 @@ if (isset($_POST['submitEventThree'])) {
         $sponsor->sponsorLink = $sponsorLink;
 
         // Lorsque l'évènement est enregistré une redirection est effectuée vers l'étape suivante en ajoutant l'id
-        header('Location: step4create.php?id=' . $_GET['id']);
+        header('Location: eventCreate.php?id=' . $_GET['id']);
     }
 }

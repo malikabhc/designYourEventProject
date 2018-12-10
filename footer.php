@@ -2,7 +2,8 @@
     <div class="container-fluid">
         <!-- Footer -->
         <div class="row">
-            <div class="offset-1 col-lg-3 mt-2 text-center"><a href="blog.php" title="Design-your-Event le Blog"><span class="font-title size">Design-your-Event</span><?= FOOTER_BLOG ?></a></div>
+            <div class="offset-1 col-lg-3 mt-2 text-center"><a href="mentionsLegales.php" title="Mentions légales"><?= FOOTER_MENTIONS ?></a></div>
+           <!-- <div class="col-lg-3 mt-2 text-center"><a href="blog.php" title="Design-your-Event le Blog"><span class="font-title size">Design-your-Event</span><?= FOOTER_BLOG ?></a></div> -->
             <div class="col-lg-4 mt-2 text-center contact"><a href="contactForm.php" title="Nous contacter"><?= FOOTER_CONTACT ?></a></div>
             <div class="col-lg-4 mt-2 text-center">
                 <a href="http://www.facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook fa-2x"></i></a>

@@ -65,7 +65,8 @@ class users {
      */
     public function checkIfUserExist() {
         $state = false;
-        $query = 'SELECT COUNT(`id`) AS `count` FROM `ye27d_users` WHERE `mail` = :mail';
+        $query = 'SELECT COUNT(`id`) AS `count` FROM `ye27d_users` '
+                . 'WHERE `mail` = :mail';
         $result = $this->db->prepare($query);
         $result->bindValue(':mail', $this->mail, PDO::PARAM_STR);
         if ($result->execute()) {
@@ -99,17 +100,17 @@ class users {
      */
     public function updateUserInformations() {
         $query = 'UPDATE `ye27d_users` '
-                . 'SET `lastname`= :lastname, `firstname`= :firstname, `birthdate`= :birthdate, `mail`= :mail, `idCity`= :cityName '
-                . 'WHERE `id`= :id';
+                . 'SET `lastname` = :lastname, `firstname` = :firstname, `birthdate` = :birthdate, `mail` = :mail, `idCity` = :cityName '
+                . 'WHERE `id` = :id';
         $result = $this->db->prepare($query);
-        $result->bindValue(':id', $this->id, PDO::PARAM_STR);
+        $result->bindValue(':id', $this->id, PDO::PARAM_INT);
         $result->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
         $result->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
         $result->bindValue(':birthdate', $this->birthdate, PDO::PARAM_STR);
         $result->bindValue(':mail', $this->mail, PDO::PARAM_STR);
         $result->bindValue(':cityName', $this->idCity, PDO::PARAM_INT);
         if (is_object($result)) {
-            // Si $result est un objet, on éxécute la requête et on récupère le résultat dans la variable $isObjectResult
+            // Si $result est un objet, on éxécute la requête et on récupère le résultat dans la variable $objectResult
             $objectResult = $result->execute();
         }
         return $objectResult;
@@ -120,7 +121,7 @@ class users {
      */
     public function removeUser() {
         $query = 'DELETE FROM `ye27d_users` '
-                . 'WHERE id = :id';
+                . 'WHERE `id` = :id';
         $result = $this->db->prepare($query);
         $result->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $result->execute();
