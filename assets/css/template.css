@@ -6,6 +6,7 @@
 .blueTheme .container{
     background-color: #32B4A4;
     height: 51rem;
+    box-shadow: 0em 0em 1em 0.5em white;
 }
 
 .redTheme{
@@ -17,4 +18,5 @@
 .redTheme .container{
     background-color: #B10321;
     height: 51rem;
+    box-shadow: 0em 0em 1em 0.5em white;
 }
